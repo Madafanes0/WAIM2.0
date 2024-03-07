@@ -2,9 +2,13 @@ import './App.css';
 import Box from './components/Box';
 import { Canvas } from '@react-three/fiber';
 import {OrbitControls} from '@react-three/drei';
+import './components/Navbar'
+import Example from './components/Navbar';
 
 export default function App() {
   return (
+    <>
+      <Example />
       <Canvas className="canvas" style={{height:'700px'}} >
         <OrbitControls enableZoom={false}/>
         
@@ -14,6 +18,7 @@ export default function App() {
         <directionalLight intensity={2} position={[-10,-5,-10]}/>
         <Box/>
       </Canvas>
+    </>
   );
 }
 
