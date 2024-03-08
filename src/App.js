@@ -9,14 +9,14 @@ export default function App() {
   return (
     <>
       <Example />
-      <Canvas className="canvas" style={{height:'700px'}} >
+      <Canvas className="canvas" style={{height:'600px'}} >
         <OrbitControls enableZoom={false}/>
         
         
         <directionalLight intensity={0.5} position={[-2,5,2]}/>
         <directionalLight intensity={2} position={[5,1,5]}/>
-        <directionalLight intensity={2} position={[-10,-5,-10]}/>
-        <Box/>
+        <directionalLight intensity={1} position={[-10,-5,-10]}/>
+        <Box />
       </Canvas>
     </>
   );
