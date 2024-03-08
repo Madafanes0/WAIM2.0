@@ -8,6 +8,10 @@ const Cube=({position, size, color})=>{
     const [isClicked, setIsClicked] = React.useState(false);
     const [isScrolled, setIsScrolled] = React.useState(false);
 
+    const handleOnClick = (faceIndex) => {
+        console.log('Clicked face', faceIndex);
+    };
+
     useFrame((state,delta)=>{
     ref.current.rotation.x += 0.1*delta;
     ref.current.rotation.y += 0.1*delta;
