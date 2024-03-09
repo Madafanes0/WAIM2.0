@@ -1,11 +1,13 @@
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import logo from '../images/Wizeline_Wordmark.png';
 
 const navigation = [
   { name: 'Work', href: '/#work', current: true },
   { name: 'Insights', href: '/#insights', current: false },
   { name: 'About', href: '/#about', current: false },
+  { name: 'About', href: '/#about', image: logo},
   { name: 'Careers', href: '/#careers', current: false },
   { name: 'Academy', href: '/#academy', current: false },
   { name: 'Contact', href: '/#contact', current: false },
@@ -18,7 +20,7 @@ function classNames(...classes) {
 
 export default function NavbarW() {
   return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="bg-zinc-800">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -37,8 +39,9 @@ export default function NavbarW() {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch">
                 <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
+                  <div className="flex space-x-10">
                     {navigation.map((item) => (
+                      item.image ? (
                       <a
                         key={item.name}
                         href={item.href}
@@ -48,8 +51,25 @@ export default function NavbarW() {
                         )}
                         aria-current={item.current ? 'page' : undefined}
                       >
-                        {item.name}
+                        <img
+                          src={item.image}
+                          alt={item.name}
+                          className="h-8 w-auto" // Adjust height and width as needed
+                        />
                       </a>
+                      ) : (
+                        <a
+                          key={item.name}
+                          href={item.href}
+                          className={classNames(
+                            item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                            'rounded-md px-3 py-2 text-sm font-medium'
+                          )}
+                          aria-current={item.current ? 'page' : undefined}
+                        >
+                          {item.name}
+                        </a>
+                    )
                     ))}
                   </div>
                 </div>
