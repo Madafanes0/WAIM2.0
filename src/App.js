@@ -12,7 +12,7 @@ export default function App() {
     <>
       <Example />
       <Canvas className="canvas" style={{height:'600px'}} >
-        <OrbitControls enableZoom={false}/>
+        <OrbitControls enableZoom={false} enablePan={false}/>
         
         <ambientLight intensity={0.5}/>
         <directionalLight intensity={0.5} position={[-2,5,2]}/>

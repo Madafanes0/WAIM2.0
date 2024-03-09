@@ -2,6 +2,7 @@ import React from 'react'
 import {useFrame } from '@react-three/fiber';
 import {useRef} from 'react';
 
+
 const Cube=({position, size, color})=>{
 
     const ref = useRef();
