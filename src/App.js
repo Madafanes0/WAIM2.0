@@ -3,14 +3,14 @@ import Box from './components/Box';
 import { Canvas } from '@react-three/fiber';
 import {OrbitControls} from '@react-three/drei';
 import './components/Navbar'
-import Example from './components/Navbar';
+import NavbarW from './components/Navbar';
 import ClickableBox from './components/ClickableBox';
 import { AmbientLight } from 'three';
 
 export default function App() {
   return (
     <>
-      <Example />
+      <NavbarW />
       <Canvas className="canvas" style={{height:'600px'}} >
         <OrbitControls enableZoom={false} enablePan={false}/>
         
