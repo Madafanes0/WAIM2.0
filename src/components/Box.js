@@ -2,6 +2,7 @@ import React from 'react'
 import {useFrame } from '@react-three/fiber';
 import {useRef} from 'react';
 
+
 const Cube=({position, size, color})=>{
 
     const ref = useRef();
@@ -11,6 +12,8 @@ const Cube=({position, size, color})=>{
     const handleOnClick = (faceIndex) => {
         console.log('Clicked face', faceIndex);
     };
+
+    
 
     useFrame((state,delta)=>{
     ref.current.rotation.x += 0.1*delta;
@@ -29,7 +32,7 @@ const Cube=({position, size, color})=>{
 
         >
             <boxGeometry attach="geometry" args={[2,2,2]}/>
-            <meshBasicMaterial attach="material"/>
+            <material attach="material"/>
         </mesh>
     );
 } 

@@ -1,6 +1,8 @@
 .App {
   text-align: center;
+  
 }
+
 
 .App-logo {
   height: 40vmin;
@@ -38,5 +40,5 @@
 }
 
 .canvas{
-  background: pink;
+  background: #111823;
 }
