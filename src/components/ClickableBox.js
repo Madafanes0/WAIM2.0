@@ -1,6 +1,7 @@
 import { useRef, Suspense } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+import { useNavigate } from 'react-router-dom'
 import luffy from '../images/luffy.jpg';
 import musashi from '../images/musashi.jpg';
 import toji from '../images/toji.webp';
@@ -8,8 +9,9 @@ import guts from '../images/guts.webp';
 import ichen from '../images/ichen.jpeg';
 import bork from '../images/bork.jpeg';
 
-const ClickableBox2 = () => {
+const ClickableBox = () => {
     const meshRef = useRef();
+    const navigate= useNavigate();
 
     //images for the Box
     const texture1 = new THREE.TextureLoader().load(luffy);
@@ -47,14 +49,15 @@ const ClickableBox2 = () => {
                     if (intersections.length > 0) {
                         const faceIndex = intersections[0].faceIndex;
                         //adding switch case for the faceIndex, for some reason idk why each face has 2 [0,1,2,3,4,5,6,7,8,9,10,11]
-                        switch(intersections[0].faceIndex){
+                        switch(faceIndex){
                             case 0 :{
                                 console.log('UwU 1');
-                                window.location.href = '/another-page'; 
+                                navigate('/another-page') 
                                 break;
                             }
                             case 1 :{
                                 console.log('UwU 1');
+                                navigate('/another-page')  
                                 break;
                             } 
                 
@@ -109,4 +112,4 @@ const ClickableBox2 = () => {
     );
 };
 
-export default ClickableBox2;
+export default ClickableBox;
