@@ -19,7 +19,7 @@ const ClickableBox2 = () => {
     const texture5= new THREE.TextureLoader().load(ichen);
     const texture6= new THREE.TextureLoader().load(bork);
     
-    //making it material
+    //making it material for use
     const material = new THREE.MeshBasicMaterial({ map: texture1 });
     const material2= new THREE.MeshBasicMaterial({ map: texture2 });
     const material3= new THREE.MeshBasicMaterial({ map: texture3 });
@@ -28,7 +28,7 @@ const ClickableBox2 = () => {
     const material6= new THREE.MeshBasicMaterial({ map: texture6 });
     
     //defining the figure
-    const geometry = new THREE.BoxGeometry(2, 2, 2);
+    const geometry = new THREE.BoxGeometry(3, 3, 3);
     //asssing the material to the figure
     const mesh = new THREE.Mesh(geometry, [material, material2, material3, material4, material5, material6]);
 
@@ -46,6 +46,7 @@ const ClickableBox2 = () => {
                     const intersections = event.intersections;
                     if (intersections.length > 0) {
                         const faceIndex = intersections[0].faceIndex;
+                        //adding switch case for the faceIndex, for some reason idk why each face has 2 [0,1,2,3,4,5,6,7,8,9,10,11]
                         switch(intersections[0].faceIndex){
                             case 0 :{
                                 console.log('UwU 1');
@@ -96,6 +97,9 @@ const ClickableBox2 = () => {
                             case 11 :{
                                 console.log('UwU 6');
                                 break;
+                            }
+                            default :{
+                                
                             }
                             }
                     }
