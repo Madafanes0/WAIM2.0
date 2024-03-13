@@ -1,5 +1,33 @@
 import React from "react";
-import ItemsContainer from "./itemsContainer.js"
+import {LOGO, CAREERS, OFFERINGS, SERVICES, INSIGHTS, ABOUT, FOLLOW} from "./Menus";
+
+const Item = ({Links, title}) => {
+  return (
+  <ul>
+      <h1 className = "mb-1 font-bold text-gray-400">{title}</h1>
+      {
+          Links.map((Link) => (
+              <li className = "mb-1 font-semibold text-white py-2" key = {Link.name}>
+                  <a href={Link.link}>{Link.name}</a>
+              </li>
+          ))
+      }
+
+  </ul>
+  )
+}
+
+const ItemsContainer = () => {
+  return <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-6 sm:px-8 px-5 py-6">
+      <Item Links = {LOGO} title = "WIZELINE"/>
+      <Item Links = {CAREERS} title = "CAREERS"/>
+      <Item Links = {OFFERINGS} title = "OFFERINGS"/>
+      <Item Links = {SERVICES} title = "SERVICES"/>
+      <Item Links = {INSIGHTS} title = "INSIGHTS"/>
+      <Item Links = {ABOUT} title = "ABOUT"/>
+      <Item Links = {FOLLOW} title = "FOLLOW US"/>
+  </div>
+}
 
 const Footer = () => {
   return <footer className ="bg-gray-800 text-white">
@@ -13,13 +41,8 @@ const Footer = () => {
       <li className="md:me-6">Terms & Conditions</li>
       <li className="md:me-6">Security and Complience</li>
     </ul>
-    
-
 
   </div>
-
-
-
 
   </footer>;
 }
