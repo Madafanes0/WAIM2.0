@@ -7,12 +7,24 @@ const navigation = [
   { name: 'Work', href: '/#work', current: false },
   { name: 'Insights', href: '/#insights', current: false },
   { name: 'About', href: '/#about', current: false },
-  // The logo item is removed from here and handled separately
   { name: 'Careers', href: '/#careers', current: false },
   { name: 'Academy', href: '/#academy', current: false },
   { name: 'Contact', href: '/#contact', current: false },
   { name: 'English', href: '/#english', current: false },
 ]
+
+const leftNavigation = [
+  { name: 'Work', href: '/#work', current: false },
+  { name: 'Insights', href: '/#insights', current: false },
+  { name: 'About', href: '/#about', current: false },
+];
+
+const rightNavigation = [
+  { name: 'Careers', href: '/#careers', current: false },
+  { name: 'Academy', href: '/#academy', current: false },
+  { name: 'Contact', href: '/#contact', current: false },
+  { name: 'English', href: '/#english', current: false },
+];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -23,12 +35,12 @@ export default function NavbarW() {
     <Disclosure as="nav" className="bg-zinc-800">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-6">
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
                 {/* Left side of the nav */}
-                <div className="hidden sm:flex sm:space-x-4">
-                  {navigation.slice(0, Math.ceil(navigation.length / 2)).map((item) => (
+                <div className="hidden sm:flex sm:space-x-16">
+                  {leftNavigation.map((item) => (
                     <a
                       key={item.name}
                       href={item.href}
@@ -47,19 +59,19 @@ export default function NavbarW() {
               {/* Logo (centered for all screen sizes) */}
               <div className="flex-1 flex justify-center sm:hidden">
                 <a href="/">
-                  <img src={logo} alt="Logo" className="h-8 w-auto" />
+                  <img src={logo} alt="Logo" className="h-5 w-auto" />
                 </a>
               </div>
               <div className="hidden sm:flex sm:flex-1 sm:justify-center">
                 <a href="/">
-                  <img src={logo} alt="Logo" className="h-8 w-auto" />
+                  <img src={logo} alt="Logo" className="h-5 w-auto" />
                 </a>
               </div>
 
               {/* Right side of the nav */}
               <div className="flex items-center">
-                <div className="hidden sm:flex sm:space-x-4">
-                  {navigation.slice(Math.ceil(navigation.length / 2)).map((item) => (
+                <div className="hidden sm:flex sm:space-x-16">
+                  {rightNavigation.map((item) => (
                     <a
                       key={item.name}
                       href={item.href}
