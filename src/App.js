@@ -3,7 +3,6 @@ import './App.css';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import NavbarW from './components/Navbar';
-import ClickableBox from './components/ClickableBox';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AnotherPage from './components/AnotherPage';
 import Footer from './components/Footer';
@@ -11,11 +10,12 @@ import Footer from './components/Footer';
 import ClickableBox2 from './components/ClickableBox2';
 import { useNavigate } from 'react-router-dom'
 import luffy from './images/luffy.jpg';
-import musashi from './images/musashi.jpg';
-import toji from './images/toji.webp';
 import guts from './images/guts.webp';
 import ichen from './images/ichen.jpeg';
-import bork from './images/bork.jpeg';
+import logo3 from './images/descargar.jpg';
+import text from './images/text.png';
+import academy from './images/academy.png';
+import wize3 from './images/wize3.png';
 
 export default function App() {
   return (
@@ -76,7 +76,7 @@ const CanvasContent = () => {
     <ClickableBox2
       size={[3, 3, 3]}
       rotationSpeed={0.0015}
-      images={[luffy, musashi, toji, guts, ichen, bork]}
+      images={[logo3, academy, wize3, guts, ichen, text]}
       onClick={handleFaceClick}
     />
   );
