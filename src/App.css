@@ -47,3 +47,11 @@ body{
   background: #111823
 
 }
+
+.fondoapp{
+  background: url("data:image/svg+xml;utf8,${encodeURIComponent(Fondo())}");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+
+}
