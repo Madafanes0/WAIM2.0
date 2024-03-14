@@ -16,6 +16,7 @@ import logo3 from './images/descargar.jpg';
 import text from './images/text.png';
 import academy from './images/academy.png';
 import wize3 from './images/wize3.png';
+import wize4 from './images/wize4.jpg';
 
 export default function App() {
   return (
@@ -76,7 +77,7 @@ const CanvasContent = () => {
     <ClickableBox2
       size={[3, 3, 3]}
       rotationSpeed={0.0015}
-      images={[logo3, academy, wize3, guts, ichen, text]}
+      images={[logo3, academy, wize3, wize4, ichen, text]}
       onClick={handleFaceClick}
     />
   );
