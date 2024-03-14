@@ -1,5 +1,6 @@
 import React from "react";
 import {LOGO, CAREERS, OFFERINGS, SERVICES, INSIGHTS, ABOUT, FOLLOW} from "./Menus";
+import logo from '../images/wizeline_logo.png';
 
 const Item = ({Links, title}) => {
   return (
@@ -18,7 +19,8 @@ const Item = ({Links, title}) => {
 }
 
 const ItemsContainer = () => {
-  return <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-6 sm:px-8 px-5 py-6">
+  return <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-6 sm:px-8 px-5 py-6">
+      <img src={logo} alt="Logo" className="h-5 w-auto my-1.5" />
       <Item Links = {LOGO} title = "WIZELINE"/>
       <Item Links = {CAREERS} title = "CAREERS"/>
       <Item Links = {OFFERINGS} title = "OFFERINGS"/>
@@ -30,16 +32,16 @@ const ItemsContainer = () => {
 }
 
 const Footer = () => {
-  return <footer className ="bg-gray-800 text-white">
+  return <footer className ="bg-zinc-800 text-white">
   <ItemsContainer/>
 
   <div className="grid grid-cols-1 sm:grid cols-2 lg:grid-cols-2 gap-10 text-center pt-2 text-gray-400 text sm:pb-8 gap-x-80">
     <p className="text-left padding pl-6">© Copyright Wizeline 2024</p>
     <ul className= "flex flex-wrap items-center justify-center text-gray-900 dark:text-white">
-      <li className="md:me-6">Cookie Notice</li>
-      <li className="md:me-6">Privacy Policy</li>
-      <li className="md:me-6">Terms & Conditions</li>
-      <li className="md:me-6">Security and Complience</li>
+      <li className="md:me-6"><a href="https://www.wizeline.com/cookie-notice/">Cookie Notice</a></li>
+      <li className="md:me-6"><a href="https://www.wizeline.com/privacy-policy/">Privacy Policy</a></li>
+      <li className="md:me-6"><a href="https://www.wizeline.com/terms-and-conditions/">Terms & Conditions</a></li>
+      <li className="md:me-6"><a href="https://www.wizeline.com/security-and-compliance/">Security and Complience</a></li>
     </ul>
 
   </div>

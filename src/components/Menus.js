@@ -1,6 +1,6 @@
 
 export const LOGO = [
-    {name: "Wizeline Logo", link: "#"}
+    {name: "Wizeline Logo", link: "#", Image: ""}
 ]
 
 export const FOLLOW = [
