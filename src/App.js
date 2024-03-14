@@ -6,6 +6,7 @@ import NavbarW from './components/Navbar';
 import ClickableBox from './components/ClickableBox';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AnotherPage from './components/AnotherPage';
+import Footer from './components/Footer';
 
 import ClickableBox2 from './components/ClickableBox2';
 import { useNavigate } from 'react-router-dom'
@@ -26,7 +27,9 @@ export default function App() {
           <Canvas className="canvas" style={{ height: '700px' }}>
             <OrbitControls enableZoom={false} enablePan={false} />
             <CanvasContent />
+
           </Canvas>
+          <Footer />
         </>} />
         <Route path="/another-page" element={<AnotherPage />} />
       </Routes>
