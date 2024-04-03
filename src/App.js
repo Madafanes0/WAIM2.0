@@ -9,7 +9,6 @@ import Footer from './components/Footer';
 
 import ClickableBox2 from './components/ClickableBox2';
 import { useNavigate } from 'react-router-dom'
-import ichen from './images/ichen.jpeg';
 import logo3 from './images/descargar.jpg';
 import text from './images/text.png';
 import academy from './images/academy.png';
