@@ -16,7 +16,6 @@ datasource db {
 model User {
   id       String  @id @default(uuid())
   email    String  @unique
-  name     String?
   password String
   Admin    Admin?
 }
@@ -28,17 +27,19 @@ model Admin {
 }
 
 model AI {
-  tool_id      String @id @default(uuid())
-  contentType  String
-  toolName     String
-  reference    String
-  generativeAI String
-  layer        String
+  tool_id       String       @id @default(uuid())
+  contentType   String
+  toolName      String
+  reference     String
+  generativeAI  String
+  layer         String
+  ContentType   ContentType? @relation(fields: [contentTypeId], references: [id])
+  contentTypeId String?
 }
 
 model ContentType {
   id          String @id @default(uuid())
   name        String
   description String
-  //tools AI[]
+  tools       AI[]
 }
