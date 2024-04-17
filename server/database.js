@@ -1,12 +1,13 @@
-import { PrismaClient } from '@prisma/client';
+const { PrismaClient }= require('@prisma/client')
 
 const prisma = new PrismaClient();
 
-async function syncUserWithDatabase(userEmail, userName) {
+async function syncUserWithDatabase(userEmail, userPassword) {
   // Check if the user exists in our database "postgres"
   let existingUser = await prisma.user.findUnique({
     where: {
       email: userEmail,
+      password: userPassword
     },
   });
 
@@ -15,30 +16,21 @@ async function syncUserWithDatabase(userEmail, userName) {
     existingUser = await prisma.user.create({
       data: {
         email: userEmail,
-        name: userName,
-      },
-    });
-  } else {
-    // User exists, update user information
-    existingUser = await prisma.user.update({
-      where: {
-        email: userEmail,
-      },
-      data: {
-        name: userName,
+        password: userPassword
       },
     });
   }
+  
 
   return existingUser;
 }
 
 // Example usage when a user logs in via Auth0 and receives the user information
-async function handleAuth0Login(userEmail, userName) {
+async function handleAuth0Login(userEmail, userPassword) {
   // Sync user with the database
-  const user = await syncUserWithDatabase(userEmail, userName);
+  const user = await syncUserWithDatabase(userEmail, userPassword);
   console.log('User synced:', user);
 }
 
 // This function is called when a user logs in via Auth0 and receives the user information
-handleAuth0Login('user@example.com', 'John Doe');
+handleAuth0Login('sadrac.aramburo@gmail.com', '123456789');

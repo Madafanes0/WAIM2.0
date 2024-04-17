@@ -14,32 +14,55 @@ datasource db {
 }
 
 model User {
-  id       String  @id @default(uuid())
-  email    String  @unique
+  id       String     @id @default(uuid())
+  email    String     @unique
   password String
-  Admin    Admin?
+  roles    UserRole[]
 }
 
-model Admin {
+model Role {
+  id    String     @id @default(uuid())
+  name  String
+  users UserRole[]
+}
+
+model UserRole {
   id     String @id @default(uuid())
-  userId String @unique
   user   User   @relation(fields: [userId], references: [id])
+  userId String
+  role   Role   @relation(fields: [roleId], references: [id])
+  roleId String
 }
 
 model AI {
-  tool_id       String       @id @default(uuid())
-  contentType   String
-  toolName      String
-  reference     String
-  generativeAI  String
-  layer         String
-  ContentType   ContentType? @relation(fields: [contentTypeId], references: [id])
-  contentTypeId String?
+  tool_id         String                   @id @default(uuid())
+  ContentType     ContentType?             @relation(fields: [contentTypeId], references: [id])
+  contentTypeId   String?
+  toolName        String
+  referenceURL    String
+  ecosystem       String
+  freeVersion     Boolean
+  paidVersion     Boolean
+  licenseType     String
+  toolDescription String
+  toolCategories  ToolEnterpriseCategory[] @relation("ToolToEnterpriseCategory") // Added this line to define the opposite relation
 }
 
 model ContentType {
-  id          String @id @default(uuid())
-  name        String
-  description String
-  tools       AI[]
+  id    String @id @default(uuid())
+  name  String
+  tools AI[]
+}
+
+model EnterpriseCategory {
+  enterpriseCategory_id String                   @id
+  name                  String
+  tools                 ToolEnterpriseCategory[] @relation("EnterpriseCategoryToTool")
+}
+
+model ToolEnterpriseCategory {
+  tool_id               String
+  tool_category_id      AI                 @relation("ToolToEnterpriseCategory", fields: [tool_id], references: [tool_id])
+  enterpriseCategory_id String             @id
+  category_id           EnterpriseCategory @relation("EnterpriseCategoryToTool", fields: [enterpriseCategory_id], references: [enterpriseCategory_id])
 }
