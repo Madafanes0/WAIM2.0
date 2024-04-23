@@ -5,13 +5,16 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import ClickableBox2 from "./ClickableBox2";
 import Footer from "./Footer";
+import FilterBox from "./FilterBox";
 
-import franky from '../images/franky.webp';
-import musashi from '../images/musashi.jpg';
-import toji from '../images/toji.webp';
-import guts from '../images/guts.webp';
-import ichen from '../images/ichen.jpeg';
-import chopper from '../images/chopper.jpg';
+import logo3 from '../images/descargar.jpg';
+import text from '../images/text.png';
+import academy from '../images/academy.png';
+import wize3 from '../images/wize3.png';
+import wize4 from '../images/wize4.jpg';
+import aimg from '../images/ai.webp';
+import code from '../images/code.png';
+import image from '../images/image.png';
 
 
 
@@ -27,10 +30,10 @@ const CanvasContent = () => {
     <>
       <ClickableBox2
         size={[3, 3, 3]}
-        rotationSpeed={0.0020}
-        images={[franky, musashi, toji, guts, ichen, chopper]}
+        rotationSpeed={0.0015}
+        images={[logo3, image, aimg, code, wize3, text]}
         onClick={handleFaceClick}
-      />
+    />
       <OrbitControls enableZoom={false} enablePan={false} />
     </>
   );
@@ -64,6 +67,7 @@ const AnotherPage = () => {
           <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
 
         </div>
+        <FilterBox />
         <Footer />
       </div>
     );

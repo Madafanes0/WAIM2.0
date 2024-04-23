@@ -3,7 +3,7 @@ import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
 
-const ClickableBox2 = ({ size = [3, 3, 3], rotationSpeed = 0.0015, images, onClick }) => {
+const ClickableBox2 = ({ size = [3, 3, 3], rotationSpeed = 0.0015, images, onClick , }) => {
     const meshRef = useRef();
 
     const textureMaterials = images.map(image => new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load(image) }));
@@ -23,6 +23,7 @@ const ClickableBox2 = ({ size = [3, 3, 3], rotationSpeed = 0.0015, images, onCli
 
     return (
         <Suspense fallback={null}>
+            <ambientLight color="#000000" intensity={2} />
             <primitive
                 ref={meshRef}
                 object={mesh}

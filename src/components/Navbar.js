@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import { Disclosure } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import logo from '../images/wizeline_logo.png';
+import Login from './Login';
 
 const navigation = [
   { name: 'Work', href: '/#work', current: false },
@@ -24,6 +25,7 @@ const rightNavigation = [
   { name: 'Academy', href: '/#academy', current: false },
   { name: 'Contact', href: '/#contact', current: false },
   { name: 'English', href: '/#english', current: false },
+  { name: 'Login', href: '/Login', current: false },
 ];
 
 function classNames(...classes) {
