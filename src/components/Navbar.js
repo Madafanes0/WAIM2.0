@@ -12,6 +12,7 @@ const navigation = [
   { name: 'Academy', href: '/#academy', current: false },
   { name: 'Contact', href: '/#contact', current: false },
   { name: 'English', href: '/#english', current: false },
+  { name: 'Login', href: '/Login', current: false },
 ]
 
 const leftNavigation = [
@@ -37,11 +38,11 @@ export default function NavbarW() {
     <Disclosure as="nav" className="bg-zinc-800">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-8xl sm:px-6 lg:px-16">
+          <div className="mx-auto max-w-7xl sm:px-6 lg:px-auto">
             <div className="flex items-center justify-between h-16">
-              <div className="flex-1 flex items-center justify-start">
+              <div className="flex">
                 {/* Left side of the nav */}
-                <div className="hidden sm:flex sm:space-x-16">
+                <div className="hidden sm:flex sm:space-x-12">
                   {leftNavigation.map((item) => (
                     <a
                       key={item.name}
@@ -64,15 +65,15 @@ export default function NavbarW() {
                   <img src={logo} alt="Logo" className="h-5 w-auto" />
                 </a>
               </div>
-              <div className="flex-initial hidden sm:flex sm:flex-1 sm:justify-center">  
+              <div className="flex-none hidden sm:flex sm:justify-center">  
                 <a href="/">
-                  <img src={logo} alt="Logo" className="h-8 w-auto" />
+                  <img src={logo} alt="Logo" className="h-6 w-auto" />
                 </a>
               </div>
 
               {/* Right side of the nav */}
-              <div className="flex-1 flex items-center justify-end">
-                <div className="hidden sm:flex sm:space-x-16">
+              <div className="flex">
+                <div className="hidden sm:flex sm:space-x-12">
                   {rightNavigation.map((item) => (
                     <a
                       key={item.name}
