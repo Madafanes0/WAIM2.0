@@ -12,16 +12,17 @@ const navigation = [
   { name: 'Academy', href: '/#academy', current: false },
   { name: 'Contact', href: '/#contact', current: false },
   { name: 'English', href: '/#english', current: false },
+  { name: 'Login', href: '/Login', current: false },
 ]
 
 const leftNavigation = [
   { name: 'Work', href: '/#work', current: false },
   { name: 'Insights', href: '/#insights', current: false },
   { name: 'About', href: '/#about', current: false },
+  { name: 'Careers', href: '/#careers', current: false },
 ];
 
 const rightNavigation = [
-  { name: 'Careers', href: '/#careers', current: false },
   { name: 'Academy', href: '/#academy', current: false },
   { name: 'Contact', href: '/#contact', current: false },
   { name: 'English', href: '/#english', current: false },
@@ -37,11 +38,11 @@ export default function NavbarW() {
     <Disclosure as="nav" className="bg-zinc-800">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-6">
+          <div className="mx-auto max-w-7xl sm:px-6 lg:px-auto">
             <div className="flex items-center justify-between h-16">
-              <div className="flex items-center">
+              <div className="flex">
                 {/* Left side of the nav */}
-                <div className="hidden sm:flex sm:space-x-16">
+                <div className="hidden sm:flex sm:space-x-12">
                   {leftNavigation.map((item) => (
                     <a
                       key={item.name}
@@ -64,15 +65,15 @@ export default function NavbarW() {
                   <img src={logo} alt="Logo" className="h-5 w-auto" />
                 </a>
               </div>
-              <div className="hidden sm:flex sm:flex-1 sm:justify-center">
+              <div className="flex-none hidden sm:flex sm:justify-center">  
                 <a href="/">
-                  <img src={logo} alt="Logo" className="h-5 w-auto" />
+                  <img src={logo} alt="Logo" className="h-6 w-auto" />
                 </a>
               </div>
 
               {/* Right side of the nav */}
-              <div className="flex items-center">
-                <div className="hidden sm:flex sm:space-x-16">
+              <div className="flex">
+                <div className="hidden sm:flex sm:space-x-12">
                   {rightNavigation.map((item) => (
                     <a
                       key={item.name}
@@ -86,8 +87,8 @@ export default function NavbarW() {
                       {item.name}
                     </a>
                   ))}
-                </div>
-                
+                </div>                
+
                 {/* Mobile menu button */}
                 <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white sm:hidden">
                   <span className="sr-only">Open main menu</span>
