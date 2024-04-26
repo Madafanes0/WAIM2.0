@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import NavbarW from "./Navbar";
 import { useNavigate } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
@@ -6,6 +6,8 @@ import { OrbitControls } from "@react-three/drei";
 import ClickableBox2 from "./ClickableBox2";
 import Footer from "./Footer";
 import FilterBox from "./FilterBox";
+import PieChart from "./PieChart";
+import data from "./data.json"
 
 import logo3 from '../images/descargar.jpg';
 import text from '../images/text.png';
@@ -39,8 +41,28 @@ const CanvasContent = () => {
   );
 };
 
-const AnotherPage = () => {
+function AnotherPage () {
   
+  const [backendData, setBackendData]= useState([{}])
+
+  useEffect(()=>{
+
+    fetch('/api').then(response => {
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
+      }
+      return response.json();
+  })
+  .then(data => {
+      setBackendData(data);
+  })
+  .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+  });
+    
+  },[] )
+
+
   return (
       <div>
         <NavbarW />
@@ -68,6 +90,7 @@ const AnotherPage = () => {
 
         </div>
         <FilterBox />
+        <PieChart data={data}/>
         <Footer />
       </div>
     );
