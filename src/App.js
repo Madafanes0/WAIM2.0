@@ -18,6 +18,7 @@ import wize4 from './images/wize4.jpg';
 import aimg from './images/ai.webp';
 import code from './images/code.png';
 import image from './images/image.png';
+//import background from './images/background.jpg';
 
 
 export default function App() {
@@ -27,7 +28,7 @@ export default function App() {
         <Route path="/" element={
         <>
           <NavbarW />
-          <Canvas className="canvas" style={{ height: '700px' }}>
+          <Canvas className="canvas" style={{ height: '700px'/*, backgroundImage: `url(${s})`*/}}>
             <OrbitControls enableZoom={false} enablePan={false} />
             <CanvasContent />
 
