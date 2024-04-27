@@ -1,10 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-import VertexAI from '../logos/VertexAI.webp'; // Import image
-import Codey from '../logos/codey.png'; // Import another image
+import VertexAI from '../logos/VertexAI.webp';
+import Codey from '../logos/codey.png';
+import sageMaker from '../logos/sageMaker.png';
 
-function PieChart({ data }) {
+const imageMap = {
+  'VertexAI.webp': VertexAI,
+  'codey.png': Codey,
+  'sageMaker.png': sageMaker
+};
+
+function PieChart({ data, backendData }) {
   const ref = useRef();
+  const tooltipRef = useRef();
 
   useEffect(() => {
     if (!data) return;
@@ -13,87 +21,76 @@ function PieChart({ data }) {
     const height = width;
     const radius = width / 6;
 
-    // Use a blue color scale that interpolates based on node depth
-    const color = d3.scaleSequential([0, 3], d3.interpolateBlues);
-
-    const hierarchy = d3.hierarchy(data)
-      .sum(d => d.value)
-      .sort((a, b) => b.value - a.value);
-    const root = d3.partition()
-      .size([2 * Math.PI, hierarchy.height + 1])
-      (hierarchy);
-
-    root.each(d => d.current = d);
-
-    const arc = d3.arc()
-      .startAngle(d => d.x0)
-      .endAngle(d => d.x1)
-      .padAngle(d => Math.min((d.x1 - d.x0) / 2, 0.005))
-      .padRadius(radius * 1.5)
-      .innerRadius(d => d.y0 * radius)
-      .outerRadius(d => Math.max(d.y0 * radius, d.y1 * radius - 1));
-
     const svg = d3.select(ref.current)
       .attr("viewBox", [-width / 2, -height / 2, width, height])
       .style("font", "10px sans-serif");
 
     svg.selectAll("*").remove();
 
-    const path = svg.append("g")
+    const hierarchy = d3.hierarchy(data)
+      .sum(d => d.value)
+      .sort((a, b) => b.value - a.value);
+
+    const partition = d3.partition()
+      .size([2 * Math.PI, hierarchy.height + 1]);
+
+    const root = partition(hierarchy);
+
+    const arc = d3.arc()
+      .startAngle(d => d.x0)
+      .endAngle(d => d.x1)
+      .innerRadius(d => d.y0 * radius)
+      .outerRadius(d => d.y1 * radius)
+      .padAngle(0.01); // This creates a small gap between sections
+
+    svg.append("g")
       .selectAll("path")
       .data(root.descendants().slice(1))
       .join("path")
-        .attr("fill", d => color(d.depth))
-        .attr("d", d => arc(d.current));
+      .attr("d", arc)
+      .attr("fill", "#203459") // Dark blue-grey color for the sections
+      .attr("stroke", "#991212") // Black borders around each section
+      .attr("stroke-width", 2) // Width of the border
+      .style("stroke-linejoin", "round") // Smooths the corners of the stroke
+      .attr("fill-opacity", 0.85);
 
-    // Append images to each arc section
-    svg.append("g")
-      .selectAll("image")
-      .data(root.descendants().slice(1))
-      .enter().append("image")
-        .attr("xlink:href", d => {
-          // Return the corresponding imported image based on the data
-          switch(d.data.name) {
-            case "Branch1":
-              return VertexAI;
-            case "Branch2":
-              return VertexAI;
-            case "Branch3":
-              return Codey;
-            default:
-              return "";
-          }
-        })
-        .attr("x", d => arc.centroid(d)[0] - 20) // Center the image on the arc
-        .attr("y", d => arc.centroid(d)[1] - 20)
-        .attr("width", 40)
-        .attr("height", 40);
+    // Tooltip logic using backendData
+    root.descendants().slice(1).forEach(d => {
+      const centroid = arc.centroid(d);
+      d.data.images.forEach((img, index) => {
+        const imageElement = svg.append("image")
+      .attr("xlink:href", imageMap[img])  // Directly use `img` which should contain the full filename.
+      .attr("x", centroid[0] - 20)
+      .attr("y", centroid[1] + index * 45 - 20)
+      .attr("width", 40)
+      .attr("height", 40);
 
-    path.filter(d => d.children)
-        .style("cursor", "pointer")
-        .on("click", clicked);
 
-    function clicked(event, p) {
-      event.stopPropagation();
-      root.each(d => d.target = {
-        x0: Math.max(0, Math.min(1, (d.x0 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
-        x1: Math.max(0, Math.min(1, (d.x1 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
-        y0: Math.max(0, d.y0 - p.depth),
-        y1: Math.max(0, d.y1 - p.depth)
+        imageElement.on("mouseenter", function(event) {
+          const matchingData = backendData.find(item => item.toolName.replace(/\s/g, '').toLowerCase() === img.replace('.webp', '').replace('.png', '').toLowerCase());
+          const tooltipHtml = matchingData ?
+            `<strong>${matchingData.toolName}</strong><br>${matchingData.toolDescription}` :
+            `No detailed data available for ${img}`;
+          
+          d3.select(tooltipRef.current)
+            .style("left", `${event.pageX + 10}px`)
+            .style("top", `${event.pageY + 10}px`)
+            .style("visibility", "visible")
+            .html(tooltipHtml);
+        }).on("mouseleave", function() {
+          d3.select(tooltipRef.current)
+            .style("visibility", "hidden");
+        });
       });
+    });
+  }, [data, backendData]); // Dependency on backendData ensures re-render when data is fetched
 
-      const t = svg.transition().duration(750);
-      path.transition(t)
-          .tween("data", d => {
-            const i = d3.interpolate(d.current, d.target);
-            return t => d.current = i(t);
-          })
-          .attrTween("d", d => () => arc(d.current));
-    }
-
-  }, [data]);
-
-  return <svg ref={ref} style={{ width: '100%', height: 'auto', maxWidth: '928px' }} />;
+  return (
+    <>
+      <svg ref={ref} style={{ width: '100%', height: 'auto', maxWidth: '928px' }} />
+      <div ref={tooltipRef} className="tooltip" style={{ position: 'absolute', visibility: 'hidden', pointerEvents: 'none', backgroundColor: 'white', border: '1px solid black', padding: '5px', zIndex: 10 }} />
+    </>
+  );
 }
-
+            
 export default PieChart;

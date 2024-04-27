@@ -7,39 +7,36 @@ import ClickableBox2 from "./ClickableBox2";
 import Footer from "./Footer";
 import FilterBox from "./FilterBox";
 import PieChart from "./PieChart";
-import VertexAI from "../logos/VertexAI.webp"
-import Codey from "../logos/codey.png"
 
 import logo3 from '../images/descargar.jpg';
 import text from '../images/text.png';
-import academy from '../images/academy.png';
 import wize3 from '../images/wize3.png';
-import wize4 from '../images/wize4.jpg';
 import aimg from '../images/ai.webp';
 import code from '../images/code.png';  
 import image from '../images/image.png';
 
 
 const data = {
-  name: "root",
-  children: [
+  "name": "root",
+  "children": [
     {
-      name: "Branch1",
-      value: 100,
-      image: VertexAI
+      "name": "Branch1",
+      "value": 200,
+      "images": ["VertexAI.webp", "codey.png", "sageMaker.png"]
     },
     {
-      name: "Branch2",
-      value: 100,
-      image: VertexAI
+      "name": "Branch2",
+      "value": 100,
+      "images": ["VertexAI.webp"]
     },
     {
-      name: "Branch3",
-      value: 100,
-      image: Codey
+      "name": "Branch3",
+      "value": 100,
+      "images": []  // Ensure even empty arrays are present if no images
     }
   ]
 };
+
 
 
 const CanvasContent = () => {
@@ -90,6 +87,9 @@ function AnotherPage () {
         <Canvas className="canvas" style={{ height: "300px", width: '300px'}}>
           <CanvasContent />
         </Canvas>
+        <div class="flex justify-center items-center h-screen">
+        <PieChart data={data} backendData={backendData}/>
+        </div>
         <div class="justify-center text-white text-center">
           <h1>Another Page</h1>
           <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
@@ -111,7 +111,7 @@ function AnotherPage () {
 
         </div>
         <FilterBox />
-        <PieChart data={data}/>
+        
         <Footer />
       </div>
     );
