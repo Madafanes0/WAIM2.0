@@ -7,7 +7,8 @@ import ClickableBox2 from "./ClickableBox2";
 import Footer from "./Footer";
 import FilterBox from "./FilterBox";
 import PieChart from "./PieChart";
-import data from "./data.json"
+import VertexAI from "../logos/VertexAI.webp"
+import Codey from "../logos/codey.png"
 
 import logo3 from '../images/descargar.jpg';
 import text from '../images/text.png';
@@ -15,10 +16,30 @@ import academy from '../images/academy.png';
 import wize3 from '../images/wize3.png';
 import wize4 from '../images/wize4.jpg';
 import aimg from '../images/ai.webp';
-import code from '../images/code.png';
+import code from '../images/code.png';  
 import image from '../images/image.png';
 
 
+const data = {
+  name: "root",
+  children: [
+    {
+      name: "Branch1",
+      value: 100,
+      image: VertexAI
+    },
+    {
+      name: "Branch2",
+      value: 100,
+      image: VertexAI
+    },
+    {
+      name: "Branch3",
+      value: 100,
+      image: Codey
+    }
+  ]
+};
 
 
 const CanvasContent = () => {
@@ -47,7 +68,7 @@ function AnotherPage () {
 
   useEffect(()=>{
 
-    fetch('/api').then(response => {
+    fetch('/api/by-content-type/Code').then(response => {
       if (!response.ok) {
           throw new Error('Network response was not ok');
       }

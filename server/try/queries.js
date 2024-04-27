@@ -20,7 +20,7 @@ WHERE
     "C"."name" = $1;
 `;
 
-const patchAI= '';
+//const patchAI=;
 
 const deleteAI = `
 DELETE FROM "AI"

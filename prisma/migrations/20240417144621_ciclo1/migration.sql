@@ -25,9 +25,9 @@ DROP COLUMN "generativeAI",
 DROP COLUMN "layer",
 DROP COLUMN "reference",
 ADD COLUMN     "ecosystem" TEXT NOT NULL,
-ADD COLUMN     "freeVersion" BOOLEAN NOT NULL,
+ADD COLUMN     "freeVersion" BOOLEAN,
 ADD COLUMN     "licenseType" TEXT NOT NULL,
-ADD COLUMN     "paidVersion" BOOLEAN NOT NULL,
+ADD COLUMN     "paidVersion" BOOLEAN,
 ADD COLUMN     "referenceURL" TEXT NOT NULL,
 ADD COLUMN     "toolDescription" TEXT NOT NULL;
 

@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
+import VertexAI from '../logos/VertexAI.webp'; // Import image
+import Codey from '../logos/codey.png'; // Import another image
 
 function PieChart({ data }) {
   const ref = useRef();
@@ -10,7 +12,9 @@ function PieChart({ data }) {
     const width = 928;
     const height = width;
     const radius = width / 6;
-    const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1));
+
+    // Use a blue color scale that interpolates based on node depth
+    const color = d3.scaleSequential([0, 3], d3.interpolateBlues);
 
     const hierarchy = d3.hierarchy(data)
       .sum(d => d.value)
@@ -39,24 +43,38 @@ function PieChart({ data }) {
       .selectAll("path")
       .data(root.descendants().slice(1))
       .join("path")
-        .attr("fill", d => { while (d.depth > 1) d = d.parent; return color(d.data.name); })
-        .attr("fill-opacity", d => arcVisible(d.current) ? (d.children ? 0.6 : 0.4) : 0)
-        .attr("d", d => arc(d.current))
-        .attr("pointer-events", d => d.children ? "auto" : "none");
+        .attr("fill", d => color(d.depth))
+        .attr("d", d => arc(d.current));
+
+    // Append images to each arc section
+    svg.append("g")
+      .selectAll("image")
+      .data(root.descendants().slice(1))
+      .enter().append("image")
+        .attr("xlink:href", d => {
+          // Return the corresponding imported image based on the data
+          switch(d.data.name) {
+            case "Branch1":
+              return VertexAI;
+            case "Branch2":
+              return VertexAI;
+            case "Branch3":
+              return Codey;
+            default:
+              return "";
+          }
+        })
+        .attr("x", d => arc.centroid(d)[0] - 20) // Center the image on the arc
+        .attr("y", d => arc.centroid(d)[1] - 20)
+        .attr("width", 40)
+        .attr("height", 40);
 
     path.filter(d => d.children)
         .style("cursor", "pointer")
         .on("click", clicked);
 
-    svg.append("circle")
-      .attr("r", radius * 0.6)
-      .style("fill", "none")
-      .style("pointer-events", "all")
-      .on("click", () => clicked(null, root));
-
     function clicked(event, p) {
-      if (!p) return;
-
+      event.stopPropagation();
       root.each(d => d.target = {
         x0: Math.max(0, Math.min(1, (d.x0 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
         x1: Math.max(0, Math.min(1, (d.x1 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
@@ -70,13 +88,9 @@ function PieChart({ data }) {
             const i = d3.interpolate(d.current, d.target);
             return t => d.current = i(t);
           })
-          .attr("fill-opacity", d => arcVisible(d.target) ? (d.children ? 0.6 : 0.4) : 0)
           .attrTween("d", d => () => arc(d.current));
     }
 
-    function arcVisible(d) {
-      return d.y1 <= 3 && d.y0 >= 1 && d.x1 > d.x0;
-    }
   }, [data]);
 
   return <svg ref={ref} style={{ width: '100%', height: 'auto', maxWidth: '928px' }} />;

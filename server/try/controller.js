@@ -41,7 +41,7 @@ const deleteAI =(req,res)=>{
     const {tool_id}=req.params;
     pool.query(queries.deleteAI, [tool_id],(error, results)=>{
         if(error) throw error;
-        res.status(200).json({message: "AI tool deleted sucesfully", data:results.rows[0]});
+        res.status(200).json({message: "AI tool deleted sucesfully or doesn't exist", data:results.rows[0]});
     })
 }
 
