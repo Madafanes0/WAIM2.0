@@ -1,13 +1,4 @@
 
-export const LOGO = [
-    {name: "Wizeline Logo", link: "#", Image: ""}
-]
-
-export const FOLLOW = [
-    {name: "Social Media Icons", link: "#"}
-]
-
-
 export const CAREERS = [
     {name : "Life at Wizeline" , link: "https://www.wizeline.com/careers/"},
     {name : "Open Roles" , link: "https://www.wizeline.com/careers/open-roles/"}
@@ -54,3 +45,11 @@ export const ABOUT = [
 
 ]
 
+export const Icons = [
+    {name: "Facebook", link: "https://www.facebook.com/WizelineGlobal"},
+    {name: "Twitter", link: "https://twitter.com/wizelineglobal"},
+    {name: "LinkedIn", link: "https://www.linkedin.com/company/wizeline"},
+    {name: "Instagram", link: "https://www.instagram.com/wizelineglobal/"},
+    {name: "Youtube", link: "https://www.youtube.com/channel/UCPGzT4wecuWM0BH9mPiulXg"},
+
+]
