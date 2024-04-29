@@ -1,6 +1,7 @@
 import React from "react";
 import {LOGO, CAREERS, OFFERINGS, SERVICES, INSIGHTS, ABOUT, FOLLOW} from "./Menus";
 import logo from '../images/wizeline_logo.png';
+import DeleteScreen from "./DeleteScreen";
 
 const Item = ({Links, title}) => {
   return (
@@ -42,6 +43,8 @@ const Footer = () => {
       <li className="md:me-6"><a href="https://www.wizeline.com/privacy-policy/">Privacy Policy</a></li>
       <li className="md:me-6"><a href="https://www.wizeline.com/terms-and-conditions/">Terms & Conditions</a></li>
       <li className="md:me-6"><a href="https://www.wizeline.com/security-and-compliance/">Security and Complience</a></li>
+      <li className="md:me-6"><a href="/DeleteScreen">Delete AI</a></li>
+      <li className="md:me-6"><a href="/AddScreen">Add AI</a></li>
     </ul>
 
   </div>

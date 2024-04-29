@@ -13,6 +13,7 @@ const navigation = [
   { name: 'Contact', href: '/#contact', current: false },
   { name: 'English', href: '/#english', current: false },
   { name: 'Login', href: '/Login', current: false },
+  
 ]
 
 const leftNavigation = [

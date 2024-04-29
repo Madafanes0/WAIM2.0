@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import NavbarW from "./Navbar";
+import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
@@ -8,12 +9,12 @@ import Footer from "./Footer";
 import FilterBox from "./FilterBox";
 import PieChart from "./PieChart";
 
-import logo3 from '../images/descargar.jpg';
 import text from '../images/text.png';
-import wize3 from '../images/wize3.png';
-import aimg from '../images/ai.webp';
 import code from '../images/code.png';  
 import image from '../images/image.png';
+import video3d from '../images/video3d.png';
+import music from '../images/music.png';
+import voice from '../images/music.png';
 
 
 const data = {
@@ -37,8 +38,6 @@ const data = {
   ]
 };
 
-
-
 const CanvasContent = () => {
   //const navigate = useNavigate(); possible if i want to make an alternative to another page 
   const handleFaceClick = (faceIndex) => {
@@ -51,7 +50,7 @@ const CanvasContent = () => {
       <ClickableBox2
         size={[3, 3, 3]}
         rotationSpeed={0.0015}
-        images={[logo3, image, aimg, code, wize3, text]}
+        images={[code, image, voice, music, video3d, text]}
         onClick={handleFaceClick}
     />
       <OrbitControls enableZoom={false} enablePan={false} />
@@ -63,22 +62,15 @@ function AnotherPage () {
   
   const [backendData, setBackendData]= useState([{}])
 
-  useEffect(()=>{
-
-    fetch('/api/by-content-type/Code').then(response => {
-      if (!response.ok) {
-          throw new Error('Network response was not ok');
-      }
-      return response.json();
-  })
-  .then(data => {
-      setBackendData(data);
-  })
-  .catch(error => {
-      console.error('There was a problem with the fetch operation:', error);
-  });
-    
-  },[] )
+  useEffect(() => {
+    axios.get('/api/by-content-type/Code')
+        .then(response => {
+            setBackendData(response.data); // Directly using response.data
+        })
+        .catch(error => {
+            console.error('There was a problem with the axios operation:', error);
+        });
+}, []);
 
 
   return (
