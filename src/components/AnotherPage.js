@@ -6,6 +6,7 @@ import { OrbitControls } from "@react-three/drei";
 import ClickableBox2 from "./ClickableBox2";
 import Footer from "./Footer";
 import FilterBox from "./FilterBox";
+import { useParams } from 'react-router-dom'; 
 
 import logo3 from '../images/descargar.jpg';
 import text from '../images/text.png';
@@ -40,32 +41,77 @@ const CanvasContent = () => {
 };
 
 const AnotherPage = () => {
-  
+  const { type } = useParams();
+
+  const renderContent = () => {
+    switch (type) {
+      case 'video':
+        return (
+          <div>
+            <h1>Video</h1>
+            <p>Video content</p>
+          </div>
+        );
+      case 'image':
+        return (
+          <div>
+            <h1>Image</h1>
+            <p>Image content</p>
+          </div>
+        );
+      case 'music':
+        return (
+          <div>
+            <h1>Music</h1>
+            <p>Music content</p>
+          </div>
+        );
+      case 'code': 
+        return (
+          <div>
+            <h1>Code</h1>
+            <p>Code content</p>
+          </div>
+        );
+      case 'voice':
+        return (
+          <div>
+            <h1>Voice</h1>
+            <p>Voice content</p>
+          </div>
+        );
+      case '3D':
+        return (
+          <div>
+            <h1>3D</h1>
+            <p>3D content</p>
+          </div>
+        );
+      case 'text':
+        return (
+          <div>
+            <h1>Text</h1>
+            <p>Text content</p>
+          </div>
+        );
+      default:
+        return (
+          <div>
+            <h1>Another Page</h1>
+            <p>Another page content</p>
+          </div>
+        );
+    }
+  };
+
   return (
       <div>
         <NavbarW />
         <Canvas className="canvas" style={{ height: "300px", width: '300px'}}>
           <CanvasContent />
         </Canvas>
-        <div class="justify-center text-white text-center">
-          <h1>Another Page</h1>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-
+        <div class="justify-center text-black text-center">
+          {renderContent()}
         </div>
         <FilterBox />
         <Footer />
