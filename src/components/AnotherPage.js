@@ -7,6 +7,7 @@ import { OrbitControls } from "@react-three/drei";
 import ClickableBox2 from "./ClickableBox2";
 import Footer from "./Footer";
 import FilterBox from "./FilterBox";
+import { useParams } from 'react-router-dom'; 
 import PieChart from "./PieChart";
 
 import text from '../images/text.png';
@@ -72,35 +73,42 @@ function AnotherPage () {
         });
 }, []);
 
-
+  const { type } = useParams(); 
+  const renderContent = () => {
+    switch (type) {
+      case 'video':
+        return (
+          <>
+          <div class="flex justify-center items-center h-screen">
+          <PieChart data={data} backendData={backendData}/>
+          </div>
+          <h1>Video</h1>
+          </>)
+      case 'image':
+        return <h1>Image</h1>;
+      case 'music':
+        return <h1>Music</h1>;
+      case 'code':
+        return <h1>Code</h1>;
+      case 'voice':
+        return <h1>Voice</h1>;
+      case '3D':
+        return <h1>3D</h1>;
+      case 'text':
+        return <h1>Text</h1>;
+      default:
+        return <h1>Unknown</h1>;
+    }
+  };
+  
   return (
       <div>
         <NavbarW />
         <Canvas className="canvas" style={{ height: "300px", width: '300px'}}>
           <CanvasContent />
         </Canvas>
-        <div class="flex justify-center items-center h-screen">
-        <PieChart data={data} backendData={backendData}/>
-        </div>
-        <div class="justify-center text-white text-center">
-          <h1>Another Page</h1>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-          <p>Another page content eghsrgdfhgpwojgdfñhjgsdfg</p>
-
+        <div class="justify-center text-black text-center">
+          {renderContent()}
         </div>
         <FilterBox />
         
