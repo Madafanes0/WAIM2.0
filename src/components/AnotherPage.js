@@ -76,22 +76,22 @@ function AnotherPage () {
   const { type } = useParams(); 
   const renderContent = () => {
     switch (type) {
-      case 'video':
+      case 'code':
         return (
           <>
           <div class="flex justify-center items-center h-screen">
           <PieChart data={data} backendData={backendData}/>
           </div>
-          <h1>Video</h1>
+          <h1>Code</h1>
           </>)
       case 'image':
         return <h1>Image</h1>;
-      case 'music':
-        return <h1>Music</h1>;
-      case 'code':
-        return <h1>Code</h1>;
       case 'voice':
         return <h1>Voice</h1>;
+      case 'music':
+        return <h1>Music</h1>;
+      case 'video':
+        return <h1>Video</h1>;
       case '3D':
         return <h1>3D</h1>;
       case 'text':

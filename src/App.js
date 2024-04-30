@@ -70,7 +70,7 @@ const CanvasContent = () => {
         break;
       case 6:
       case 7:
-        console.log('Muisic');
+        console.log('Music');
         navigate(route + 'music');
         break;
       case 8:
