@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import NavbarW from "./Navbar";
+import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
@@ -7,18 +8,36 @@ import ClickableBox2 from "./ClickableBox2";
 import Footer from "./Footer";
 import FilterBox from "./FilterBox";
 import { useParams } from 'react-router-dom'; 
+import PieChart from "./PieChart";
 
-import logo3 from '../images/descargar.jpg';
 import text from '../images/text.png';
-import academy from '../images/academy.png';
-import wize3 from '../images/wize3.png';
-import wize4 from '../images/wize4.jpg';
-import aimg from '../images/ai.webp';
-import code from '../images/code.png';
+import code from '../images/code.png';  
 import image from '../images/image.png';
+import video3d from '../images/video3d.png';
+import music from '../images/music.png';
+import voice from '../images/music.png';
 
 
-
+const data = {
+  "name": "root",
+  "children": [
+    {
+      "name": "Branch1",
+      "value": 200,
+      "images": ["VertexAI.webp", "codey.png", "sageMaker.png"]
+    },
+    {
+      "name": "Branch2",
+      "value": 100,
+      "images": ["VertexAI.webp"]
+    },
+    {
+      "name": "Branch3",
+      "value": 100,
+      "images": []  // Ensure even empty arrays are present if no images
+    }
+  ]
+};
 
 const CanvasContent = () => {
   //const navigate = useNavigate(); possible if i want to make an alternative to another page 
@@ -32,7 +51,7 @@ const CanvasContent = () => {
       <ClickableBox2
         size={[3, 3, 3]}
         rotationSpeed={0.0015}
-        images={[logo3, image, aimg, code, wize3, text]}
+        images={[code, image, voice, music, video3d, text]}
         onClick={handleFaceClick}
     />
       <OrbitControls enableZoom={false} enablePan={false} />
@@ -40,70 +59,48 @@ const CanvasContent = () => {
   );
 };
 
-const AnotherPage = () => {
-  const { type } = useParams();
+function AnotherPage () {
+  
+  const [backendData, setBackendData]= useState([{}])
 
+  useEffect(() => {
+    axios.get('/api/by-content-type/Code')
+        .then(response => {
+            setBackendData(response.data); // Directly using response.data
+        })
+        .catch(error => {
+            console.error('There was a problem with the axios operation:', error);
+        });
+}, []);
+
+  const { type } = useParams(); 
   const renderContent = () => {
     switch (type) {
       case 'video':
         return (
-          <div>
-            <h1>Video</h1>
-            <p>Video content</p>
+          <>
+          <div class="flex justify-center items-center h-screen">
+          <PieChart data={data} backendData={backendData}/>
           </div>
-        );
+          <h1>Video</h1>
+          </>)
       case 'image':
-        return (
-          <div>
-            <h1>Image</h1>
-            <p>Image content</p>
-          </div>
-        );
+        return <h1>Image</h1>;
       case 'music':
-        return (
-          <div>
-            <h1>Music</h1>
-            <p>Music content</p>
-          </div>
-        );
-      case 'code': 
-        return (
-          <div>
-            <h1>Code</h1>
-            <p>Code content</p>
-          </div>
-        );
+        return <h1>Music</h1>;
+      case 'code':
+        return <h1>Code</h1>;
       case 'voice':
-        return (
-          <div>
-            <h1>Voice</h1>
-            <p>Voice content</p>
-          </div>
-        );
+        return <h1>Voice</h1>;
       case '3D':
-        return (
-          <div>
-            <h1>3D</h1>
-            <p>3D content</p>
-          </div>
-        );
+        return <h1>3D</h1>;
       case 'text':
-        return (
-          <div>
-            <h1>Text</h1>
-            <p>Text content</p>
-          </div>
-        );
+        return <h1>Text</h1>;
       default:
-        return (
-          <div>
-            <h1>Another Page</h1>
-            <p>Another page content</p>
-          </div>
-        );
+        return <h1>Unknown</h1>;
     }
   };
-
+  
   return (
       <div>
         <NavbarW />
@@ -114,6 +111,7 @@ const AnotherPage = () => {
           {renderContent()}
         </div>
         <FilterBox />
+        
         <Footer />
       </div>
     );

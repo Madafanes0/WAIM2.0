@@ -1,6 +1,7 @@
 import React from "react";
-import {LOGO, CAREERS, OFFERINGS, SERVICES, INSIGHTS, ABOUT, FOLLOW} from "./Menus";
+import { CAREERS, OFFERINGS, SERVICES, INSIGHTS, ABOUT, Icons} from "./Menus";
 import logo from '../images/wizeline_logo.png';
+import DeleteScreen from "./DeleteScreen";
 
 const Item = ({Links, title}) => {
   return (
@@ -18,16 +19,33 @@ const Item = ({Links, title}) => {
   )
 }
 
+const SocialIcons = ({Icons}) => {
+  return (
+    <div className="">
+      <h1 className="mb-1 font-bold text-gray-400">FOLLOW US</h1>
+      <div className="flex items-center">
+        {
+          Icons.map((Icon) => (
+            <a href={Icon.link} key={Icon.name} className="me-4 text-white py-2 mb-1 font-semibold">
+              <img src={`https://img.icons8.com/ios-glyphs/30/ffffff/${Icon.name.toLowerCase()}.png`} alt={Icon.name}/>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  )
+}
+
 const ItemsContainer = () => {
-  return <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-6 sm:px-8 px-5 py-6">
-      <img src={logo} alt="Logo" className="h-5 w-auto my-1.5" />
-      <Item Links = {LOGO} title = "WIZELINE"/>
+  return <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-6 sm:px-8 px-5 py-6">
+      <a href="/"><img src={logo} alt="Logo" className="h-5 w-auto my-1.5" /></a>
       <Item Links = {CAREERS} title = "CAREERS"/>
       <Item Links = {OFFERINGS} title = "OFFERINGS"/>
       <Item Links = {SERVICES} title = "SERVICES"/>
       <Item Links = {INSIGHTS} title = "INSIGHTS"/>
       <Item Links = {ABOUT} title = "ABOUT"/>
-      <Item Links = {FOLLOW} title = "FOLLOW US"/>
+      <div><SocialIcons Icons = {Icons}/></div>
+      
   </div>
 }
 
@@ -42,6 +60,8 @@ const Footer = () => {
       <li className="md:me-6"><a href="https://www.wizeline.com/privacy-policy/">Privacy Policy</a></li>
       <li className="md:me-6"><a href="https://www.wizeline.com/terms-and-conditions/">Terms & Conditions</a></li>
       <li className="md:me-6"><a href="https://www.wizeline.com/security-and-compliance/">Security and Complience</a></li>
+      <li className="md:me-6"><a href="/DeleteScreen">Delete AI</a></li>
+      <li className="md:me-6"><a href="/AddScreen">Add AI</a></li>
     </ul>
 
   </div>

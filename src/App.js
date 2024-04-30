@@ -7,18 +7,19 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import AnotherPage from './components/AnotherPage';
 import Footer from './components/Footer';
 import Login from './components/Login';
-
+import DeleteScreen from './components/DeleteScreen';
+import AddScreen from './components/AddScreen';
 import ClickableBox2 from './components/ClickableBox2';
 import { useNavigate } from 'react-router-dom'
-import logo3 from './images/descargar.jpg';
+
 import text from './images/text.png';
-import academy from './images/academy.png';
-import wize3 from './images/wize3.png';
-import wize4 from './images/wize4.jpg';
-import aimg from './images/ai.webp';
 import code from './images/code.png';
 import image from './images/image.png';
 import { rotate } from 'three/examples/jsm/nodes/Nodes.js';
+import video3d from './images/video3d.png';
+import music from './images/music.png';
+import voice from './images/voice.png';
+
 //import background from './images/background.jpg';
 
 
@@ -39,6 +40,8 @@ export default function App() {
         <Route path="/another-page/:type" element={<AnotherPage />} />
         <Route path='*'>404 Not Found</Route>
         <Route path='/Login' element={<Login/>}/>
+        <Route path='/DeleteScreen' element={<DeleteScreen/>}/>
+        <Route path='/AddScreen' element={<AddScreen/>}/>
       </Routes>
     </Router>
   );
@@ -92,7 +95,7 @@ const CanvasContent = () => {
     <ClickableBox2
       size={[3, 3, 3]}
       rotationSpeed={0.0015}
-      images={[logo3, image, aimg, code, wize3, text]}
+      images={[code, image, voice, music, video3d, text]}
       onClick={handleFaceClick}
     />
   );
