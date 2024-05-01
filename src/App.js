@@ -55,8 +55,8 @@ const CanvasContent = () => {
     switch (faceIndex) {
       case 0:
       case 1:
-        console.log('Video');
-        navigate(route + 'video');
+        console.log('Code');
+        navigate(route + 'code');
         break;
       case 2:
       case 3:
@@ -65,17 +65,17 @@ const CanvasContent = () => {
         break;
       case 4:
       case 5:
-        console.log('Music');
-        navigate(route + 'music');
+        console.log('Voice');
+        navigate(route + 'voice');
         break;
       case 6:
       case 7:
-        console.log('Code');
-        navigate(route + 'code');
+        console.log('Music');
+        navigate(route + 'music');
         break;
       case 8:
-        console.log('Voice');
-        navigate(route + 'voice');
+        console.log('Video');
+        navigate(route + 'video');
         break;
       case 9:
         console.log('3D');
