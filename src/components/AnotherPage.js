@@ -103,7 +103,17 @@ const dataVideo = {
     {
       "name": "Branch1",
       "value": 100,
-      "images": ["videoAI.png", "amazonPolly.png", "synesthesia.png"]
+      "images": ["videoAI.png"]
+    },
+    {
+      "name": "Branch1",
+      "value": 100,
+      "images": ["amazonPolly.png"]
+    },
+    {
+      "name": "Branch1",
+      "value": 100,
+      "images": ["synesthesia.png"]
     }
   ]
 };
