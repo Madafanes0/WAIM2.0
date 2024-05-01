@@ -9,64 +9,86 @@ const AddScreen = () => {
         toolName: "",
         contentTypeId: "",
         ecosystem: "",
-        freeVersion: false,
         licenseType: "",
-        paidVersion: false,
         referenceURL: "",
-        toolDescription: ""
+        toolDescription: "",
+        freeVersion: false,
+        paidVersion: false
     });
+    const [message, setMessage] = useState('');
 
     const handleChange = (e) => {
-        const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+        const { name, type, checked, value } = e.target;
         setFormData({
             ...formData,
-            [e.target.name]: value
+            [name]: type === 'checkbox' ? checked : value
         });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/api/', formData);
-            alert('Tool added successfully!');
+            await axios.post('/api/', formData);
+            setMessage('Tool added successfully!');
             setFormData({
                 tool_id: "",
                 toolName: "",
                 contentTypeId: "",
                 ecosystem: "",
-                freeVersion: false,
                 licenseType: "",
-                paidVersion: false,
                 referenceURL: "",
-                toolDescription: ""
+                toolDescription: "",
+                freeVersion: false,
+                paidVersion: false
             });
         } catch (error) {
             console.error('Error adding tool:', error);
-            alert('Failed to add tool. ' + error.message);
+            setMessage('Failed to add tool. ' + error.message);
         }
     };
 
     return (
         <>
         <Navbar/>
-        <div className="container mx-auto p-4">
-            <h1 className="text-xl font-bold text-center mb-4">Add New Tool</h1>
-            <form onSubmit={handleSubmit} className="space-y-4">
-                <input name="tool_id" type="text" placeholder="Tool ID" value={formData.tool_id} onChange={handleChange} className="input"/>
-                <input name="toolName" type="text" placeholder="Tool Name" value={formData.toolName} onChange={handleChange} className="input"/>
-                <input name="contentTypeId" type="text" placeholder="Content Type ID" value={formData.contentTypeId} onChange={handleChange} className="input"/>
-                <input name="ecosystem" type="text" placeholder="Ecosystem" value={formData.ecosystem} onChange={handleChange} className="input"/>
-                <div>
-                    <label><input name="freeVersion" type="checkbox" checked={formData.freeVersion} onChange={handleChange}/> Free Version</label>
-                </div>
-                <input name="licenseType" type="text" placeholder="License Type" value={formData.licenseType} onChange={handleChange} className="input"/>
-                <div>
-                    <label><input name="paidVersion" type="checkbox" checked={formData.paidVersion} onChange={handleChange}/> Paid Version</label>
-                </div>
-                <input name="referenceURL" type="text" placeholder="Reference URL" value={formData.referenceURL} onChange={handleChange} className="input"/>
-                <textarea name="toolDescription" placeholder="Tool Description" value={formData.toolDescription} onChange={handleChange} className="input"></textarea>
-                <button type="submit" className="button">Add Tool</button>
-            </form>
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+            <div className="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
+                <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">Add New AI Tool</h1>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                    {/* Mapping through formData to render input fields */}
+                    {Object.entries(formData).map(([key, value]) => {
+                        const isCheckbox = key.includes("Version");
+                        return (
+                            <div key={key} className="flex flex-col">
+                                <label htmlFor={key} className="block text-sm font-medium text-gray-700 capitalize">{key.replace(/([a-z])([A-Z])/g, '$1 $2')}</label>
+                                {isCheckbox ? (
+                                    <input
+                                        type="checkbox"
+                                        id={key}
+                                        name={key}
+                                        checked={value}
+                                        onChange={handleChange}
+                                        className="mt-1"
+                                    />
+                                ) : (
+                                    <input
+                                        type="text"
+                                        id={key}
+                                        name={key}
+                                        value={value}
+                                        onChange={handleChange}
+                                        placeholder={`Enter ${key.replace(/([a-z])([A-Z])/g, '$1 $2')}`}
+                                        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                                    />
+                                )}
+                            </div>
+                        );
+                    })}
+                    <button type="submit" className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        Add Tool
+                    </button>
+                </form>
+                {message && <p className="mt-4 text-center text-sm font-medium text-green-600">{message}</p>}
+            </div>
         </div>
         <Footer/>
         </>
@@ -74,5 +96,3 @@ const AddScreen = () => {
 };
 
 export default AddScreen;
-
-
