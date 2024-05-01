@@ -15,6 +15,30 @@ import videoAI from '../logos/videoAI.png';
 import amazonPolly from '../logos/amazonPolly.png';
 import synesthesia from '../logos/synesthesia.png';
 import azureKinect from '../logos/azureKinect.png';
+import palM2 from '../logos/palM2.png';
+import autoML from '../logos/autoML.png';
+import naturalLanguage from '../logos/naturalLanguage.png';
+import speechToText from '../logos/speechToText.png';
+import translationAI from '../logos/translationAI.png';
+import dialogflow from '../logos/dialogflow.png';
+import amazonComprehend from '../logos/amazonComprehend.png';
+import amazonKendra from '../logos/amazonKendra.png';
+import amazonTextract from '../logos/amazonTextract.png';
+import amazonBedrock from '../logos/amazonBedrock.png';
+import amazonCodewhisperer from '../logos/amazonCodewhisperer.png';
+import azureAIDocIntelligence from '../logos/azureAIDocIntelligence.png';
+import azureMachineLearning from '../logos/azureMachineLearning.png';
+import azureCognitiveSearch from '../logos/azureCognitiveSearch.webp';
+import azureBotService from '../logos/azureBotService.png';
+import azureDatabricks from '../logos/azureDatabricks.png';
+import azureOpenAI from '../logos/azureOpenAI.png';
+import quillbot from '../logos/quillbot.webp';
+import jenni from '../logos/jenni.png';
+import llamaIndex from '../logos/llamaIndex.png';
+import octane from '../logos/octane.png';
+import quickchatAI from '../logos/quickchatAI.png';
+import quizgecko from '../logos/quizgecko.png';
+import quotifyAI from '../logos/quotifyAI.png';
 
 const imageMap = {
     'vertexAI.webp': vertexAI,
@@ -31,7 +55,31 @@ const imageMap = {
     'videoAI.png': videoAI,
     'amazonPolly.png': amazonPolly,
     'synesthesia.png': synesthesia,
-    'azureKinect.png': azureKinect
+    'azureKinect.png': azureKinect,
+    'palM2.png': palM2,
+    'autoML.png': autoML,
+    'naturalLanguage.png': naturalLanguage,
+    'speechToText.png': speechToText,
+    'translationAI.png': translationAI,
+    'dialogflow.png': dialogflow,
+    'amazonComprehend.png': amazonComprehend,
+    'amazonKendra.png': amazonKendra,
+    'amazonTextract.png': amazonTextract,
+    'amazonBedrock.png': amazonBedrock,
+    'amazonCodewhisperer.png': amazonCodewhisperer,
+    'azureAIDocIntelligence.png': azureAIDocIntelligence,
+    'azureMachineLearning.png': azureMachineLearning,
+    'azureCognitiveSearch.webp': azureCognitiveSearch,
+    'azureBotService.png': azureBotService,
+    'azureDatabricks.png': azureDatabricks,
+    'azureOpenAI.png': azureOpenAI,
+    'quillbot.webp': quillbot,
+    'jenni.png': jenni,
+    'llamaIndex.png': llamaIndex,
+    'octane.png': octane,
+    'quickchatAI.png': quickchatAI,
+    'quizgecko.png': quizgecko,
+    'quotifyAI.png': quotifyAI
 };
 
 function PieChart({ data, backendData }) {

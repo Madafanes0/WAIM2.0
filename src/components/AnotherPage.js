@@ -106,12 +106,12 @@ const dataVideo = {
       "images": ["videoAI.png"]
     },
     {
-      "name": "Branch1",
+      "name": "Branch2",
       "value": 100,
       "images": ["amazonPolly.png"]
     },
     {
-      "name": "Branch1",
+      "name": "Branch3",
       "value": 100,
       "images": ["synesthesia.png"]
     }
@@ -135,7 +135,9 @@ const dataText = {
     {
       "name": "Branch1",
       "value": 100,
-      "images": ["palM2.png", "vertexAI.png", "autoML.png", "naturalLanguage", "speechToText", "transaltionAI", "dialogflow", "amazonComprehend", "amazonKendra",  ]
+      "images": ["palM2.png", "vertexAI.png", "autoML.png", "naturalLanguage.png", "speechToText.png", "transaltionAI.png", "dialogflow.png", "amazonComprehend.png", "amazonKendra.png", "amazonTextract.png","amazonBedrock.png",
+    "amazonCodewhisperer.png", "azureAIDocIntelligence.png", "azureMachineLearning.png", "azureCognitiveSearch.webp", "azureBotService.png", "azureDatabricks.png", "azureOpenAI.png", "quillbot.webp", "jenni.png",
+    "llamaIndex.png", "octane.png", "quickchatAI.png", "quizgecko.png", "quotifyAI.png", "perplexityAI.png"]
     }
   ]
 };
