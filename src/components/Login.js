@@ -39,7 +39,7 @@ function Login() {
                         onChange={e=>setPassword(e.target.value)}    />
                     </div>
                     <div>
-                        <button type="submit" className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 focus:bg-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 transition-colors duration-300">
+                    <button type="submit" className="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-900 transition-colors duration-300">
                             Sign Up
                         </button>
                     </div>
