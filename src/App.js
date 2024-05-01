@@ -20,8 +20,8 @@ import video3d from './images/video3d.png';
 import music from './images/music.png';
 import voice from './images/voice.png';
 
-//import background from './images/background.jpg';
-
+import background from './images/background.svg';
+ 
 
 export default function App() {
   return (
@@ -30,7 +30,7 @@ export default function App() {
         <Route path="/" element={
         <>
           <NavbarW />
-          <Canvas className="canvas" style={{ height: '700px'/*, backgroundImage: `url(${s})`*/}}>
+          <Canvas className="canvas" style={{ height: '700px', backgroundImage: `url(${background})`}}>
             <OrbitControls enableZoom={false} enablePan={false} />
             <CanvasContent />
 
