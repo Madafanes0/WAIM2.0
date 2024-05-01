@@ -45,7 +45,17 @@ const dataImage = {
     {
       "name": "Branch1",
       "value": 100,
-      "images": ["visionAI.png", "amazonRekognition.png", "googleGemini.png"]
+      "images": ["visionAI.png"]
+    },
+    {
+      "name": "Branch2",
+      "value": 100,
+      "images": ["amazonRekognition.png"]
+    },
+    {
+      "name": "Branch3",
+      "value": 100,
+      "images": ["googleGemini.png"]
     }
   ]
 };

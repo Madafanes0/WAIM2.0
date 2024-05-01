@@ -7,6 +7,7 @@ import visionAI from '../logos/visionAI.png';
 import amazonRekognition from '../logos/amazonRekognition.png';
 import googleGemini from '../logos/googleGemini.webp';
 import textToSpeech from '../logos/textToSpeech.png';
+import amazonLex from '../logos/amazonLex.png';
 import krisp from '../logos/krisp.png';
 import suno from '../logos/suno.png';
 import musicGen from '../logos/musicGen.png';
@@ -23,6 +24,7 @@ const imageMap = {
     'amazonRekognition.png': amazonRekognition,
     'googleGemini.png': googleGemini,
     'textToSpeech.png': textToSpeech,
+    'amazonLex.png': amazonLex,
     'krisp.png': krisp,
     'suno.png': suno,
     'musicGen.png': musicGen,
