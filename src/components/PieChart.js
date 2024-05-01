@@ -16,6 +16,7 @@ import amazonPolly from '../logos/amazonPolly.png';
 import synesthesia from '../logos/synesthesia.png';
 import azureKinect from '../logos/azureKinect.png';
 import palM2 from '../logos/palM2.png';
+import chirp from '../logos/chirp.webp';
 import autoML from '../logos/autoML.png';
 import naturalLanguage from '../logos/naturalLanguage.png';
 import speechToText from '../logos/speechToText.png';
@@ -57,6 +58,7 @@ const imageMap = {
     'synesthesia.png': synesthesia,
     'azureKinect.png': azureKinect,
     'palM2.png': palM2,
+    'chirp.webp': chirp,
     'autoML.png': autoML,
     'naturalLanguage.png': naturalLanguage,
     'speechToText.png': speechToText,

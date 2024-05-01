@@ -133,11 +133,24 @@ const dataText = {
   "name": "root",
   "children": [
     {
-      "name": "Branch1",
+      "name": "Foundation Models",
+      "value": 50,
+      "images": ["palM2.png", "azureDatabricks.png"]
+    },
+    {
+      "name": "Cloud Services",
       "value": 100,
-      "images": ["palM2.png", "vertexAI.png", "autoML.png", "naturalLanguage.png", "speechToText.png", "transaltionAI.png", "dialogflow.png", "amazonComprehend.png", "amazonKendra.png", "amazonTextract.png","amazonBedrock.png",
-    "amazonCodewhisperer.png", "azureAIDocIntelligence.png", "azureMachineLearning.png", "azureCognitiveSearch.webp", "azureBotService.png", "azureDatabricks.png", "azureOpenAI.png", "quillbot.webp", "jenni.png",
-    "llamaIndex.png", "octane.png", "quickchatAI.png", "quizgecko.png", "quotifyAI.png", "perplexityAI.png"]
+      "images": ["chirp.webp", "autoML.png", "naturalLanguage.png", "speechToText.png", "transaltionAI.png","amazonBedrock.png", "azureAIDocIntelligence.png", "azureMachineLearning.png", "azureCognitiveSearch.webp", "llamaIndex.png"]
+    },
+    {
+      "name": "Applications",
+      "value": 100,
+      "images": ["dialogflow.png", "amazonComprehend.png", "amazonKendra.png", "amazonCodewhisperer.png", "azureBotService.png", "quillbot.webp", "jenni.png", "octane.png", "quickchatAI.png", "quizgecko.png", "quotifyAI.png", "perplexityAI.png"]
+    },
+    {
+      "name": "Data and Integration Services",
+      "value": 50,
+      "images": ["amazonTextract.png"]
     }
   ]
 };
