@@ -4,7 +4,7 @@ const queries = require("./queries")
 
 
 
-const getAI = (req, res) => {
+const getAI = async (req, res) => {
     
     pool.query(queries.getAI, (error, results) => {
     if (error) throw error;
@@ -22,7 +22,7 @@ const getAIByContentType = (req, res)=>{
     })
 }
 
-const postAI =(req, res)=>{
+const postAI = async (req, res)=>{
 
     const { tool_id, toolName, contentTypeId, ecosystem, freeVersion, licenseType, paidVersion, referenceURL, toolDescription } = req.body;
 
