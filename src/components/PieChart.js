@@ -93,7 +93,7 @@ function PieChart({ data, backendData }) {
   
       const width = 928;
       const height = width;
-      const radius = width / 6;
+      const radius = width / 2.5;
   
       const svg = d3.select(ref.current)
         .attr("viewBox", [-width / 2, -height / 2, width, height])
@@ -106,68 +106,91 @@ function PieChart({ data, backendData }) {
         .sort((a, b) => b.value - a.value);
   
       const partition = d3.partition()
-        .size([2 * Math.PI, hierarchy.height + 1]);
+        .size([2 * Math.PI, radius]);
   
       const root = partition(hierarchy);
   
       const arc = d3.arc()
         .startAngle(d => d.x0)
         .endAngle(d => d.x1)
-        .innerRadius(d => d.y0 * radius)
-        .outerRadius(d => d.y1 * radius)
-        .padAngle(0.0); // This creates a small gap between sections
+        .innerRadius(d => radius / 5)
+        .outerRadius(d => radius);
   
       svg.append("g")
         .selectAll("path")
         .data(root.descendants().slice(1))
         .join("path")
         .attr("d", arc)
-        .attr("fill", "#203459") // Dark blue-grey color for the sections
-        .attr("stroke", "#991212") // Black borders around each section
-        .attr("stroke-width", 2) // Width of the border
-        .style("stroke-linejoin", "round") // Smooths the corners of the stroke
-        .attr("fill-opacity", 0.85);
+        .attr("fill", d => "#203459")
+        .attr("stroke", "#991212")
+        .attr("stroke-width", 2);
   
-      // Tooltip logic using backendData
+      const placedImages = [];
+  
       root.descendants().slice(1).forEach(d => {
-        const arcHeight = (d.y1 - d.y0) * radius; // Calculate the height of the segment
-        let imageSize = Math.min(60, arcHeight / 2); // Determine the size of the image, but not larger than 60px
-        const centroid = arc.centroid(d);
-      
-        d.data.images.forEach((img, index) => {
-          const totalHeight = d.data.images.length * imageSize;
-          let imageYPosition = centroid[1] - totalHeight / 2 + index * imageSize;
-          const imageElement = svg.append("image")
-          .attr("xlink:href", imageMap[img])
-          .attr("x", centroid[0] - imageSize / 2)
-          .attr("y", imageYPosition)
-          .attr("width", imageSize+40)
-          .attr("height", imageSize+40);
-    
-        imageElement.on("mouseenter", function(event) {
-          const matchingData = backendData.find(item => item.toolName.replace(/\s/g, '').toLowerCase() === img.replace('.webp', '').replace('.png', '').toLowerCase());
-          const tooltipHtml = matchingData ?
-            `<strong>${matchingData.toolName}</strong><br>${matchingData.toolDescription}` :
-            `No detailed data available for ${img}`;
-          
-          d3.select(tooltipRef.current)
-            .style("left", `${event.pageX + 10}px`)
-            .style("top", `${event.pageY + 10}px`)
-            .style("visibility", "visible")
-            .html(tooltipHtml);
-        }).on("mouseleave", function() {
-          d3.select(tooltipRef.current)
-            .style("visibility", "hidden");
+        const angleMargin = 0.2; // Prevents touching the lines
+        const startAngle = d.x0 + angleMargin;
+        const endAngle = d.x1 - angleMargin;
+        const innerRadius = radius / 5 + 40; // Buffer for inner radius
+        const outerRadius = radius - 70; // Buffer for outer radius
+  
+        d.data.images.forEach(img => {
+          let attempts = 20;
+          let placed = false;
+  
+          while (!placed && attempts > 0) {
+            const randomAngle = Math.random() * (endAngle - startAngle) + startAngle;
+            const randomRadius = Math.random() * (outerRadius - innerRadius) + innerRadius;
+            const imageSize = Math.min(25, (outerRadius - innerRadius) / 3);
+            const x = randomRadius * Math.sin(randomAngle);
+            const y = -randomRadius * Math.cos(randomAngle);
+  
+            // Check for collisions
+            const collision = placedImages.some(p => {
+              return Math.sqrt((p.x - x) ** 2 + (p.y - y) ** 2) < p.size + imageSize;
+            });
+  
+            if (!collision) {
+              placedImages.push({ x, y, size: imageSize });
+              const imageElement = svg.append("image")
+                .attr("xlink:href", imageMap[img])
+                .attr("x", x - imageSize / 2)
+                .attr("y", y - imageSize / 2)
+                .attr("width", imageSize+30)
+                .attr("height", imageSize+30);
+  
+              // Adding tooltip functionality based on backendData
+              imageElement.on("mouseenter", function(event) {
+                const matchingData = backendData.find(item => item.toolName.replace(/\s/g, '').toLowerCase() === img.replace('.webp', '').replace('.png', '').toLowerCase());
+                const tooltipHtml = matchingData ?
+                  `<strong>${matchingData.toolName}</strong><br>${matchingData.toolDescription}` :
+                  `No detailed data available for ${img}`;
+  
+                d3.select(tooltipRef.current)
+                  .style("left", `${event.pageX + 10}px`)
+                  .style("top", `${event.pageY + 10}px`)
+                  .style("visibility", "visible")
+                  .html(tooltipHtml);
+              }).on("mouseleave", function() {
+                d3.select(tooltipRef.current)
+                  .style("visibility", "hidden");
+              });
+  
+              placed = true;
+            }
+  
+            attempts--;
+          }
         });
       });
-    });
-  }, [data, backendData]);
-  return (
-    <>
-      <svg ref={ref} style={{ width: '100%', height: 'auto', maxWidth: '928px' }} />
-      <div ref={tooltipRef} className="tooltip" style={{ position: 'absolute', visibility: 'hidden', pointerEvents: 'none', backgroundColor: 'white', border: '1px solid black', padding: '5px', zIndex: 10 }} />
-    </>
-  );
-}
-
-export default PieChart;
+    }, [data, backendData]);
+  
+    return (
+      <>
+        <svg ref={ref} style={{ width: '100%', height: 'auto', maxWidth: '928px' }} />
+        <div ref={tooltipRef} className="tooltip" style={{ position: 'absolute', visibility: 'hidden', pointerEvents: 'none', backgroundColor: 'white', border: '1px solid black', padding: '5px', zIndex: 10 }} />
+      </>
+    );
+  }
+  
+  export default PieChart;

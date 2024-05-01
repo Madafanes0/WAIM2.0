@@ -144,7 +144,7 @@ const dataText = {
     },
     {
       "name": "Applications",
-      "value": 100,
+      "value": 150,
       "images": ["dialogflow.png", "amazonComprehend.png", "amazonKendra.png", "amazonCodewhisperer.png", "azureBotService.png", "quillbot.webp", "jenni.png", "octane.png", "quickchatAI.png", "quizgecko.png", "quotifyAI.png", "perplexityAI.png"]
     },
     {
