@@ -66,7 +66,17 @@ const dataVoice = {
     {
       "name": "Branch1",
       "value": 100,
-      "images": ["textToSpeech.png", "amazonLex","krisp.png"]
+      "images": ["textToSpeech.png"]
+    },
+    {
+      "name": "Branch1",
+      "value": 100,
+      "images": ["amazonLex.png"]
+    },
+    {
+      "name": "Branch1",
+      "value": 100,
+      "images": ["googleGemini.png"]
     }
   ]
 };
