@@ -18,23 +18,89 @@ import music from '../images/music.png';
 import voice from '../images/music.png';
 
 
-const data = {
+const dataCode = {
   "name": "root",
   "children": [
     {
       "name": "Branch1",
-      "value": 200,
-      "images": ["VertexAI.webp", "codey.png", "sageMaker.png"]
+      "value": 100,
+      "images": ["vertexAI.webp"]
     },
     {
       "name": "Branch2",
       "value": 100,
-      "images": ["VertexAI.webp"]
+      "images": ["codey.png"]
     },
     {
       "name": "Branch3",
       "value": 100,
-      "images": []  // Ensure even empty arrays are present if no images
+      "images": ["sageMaker.png"] 
+    }
+  ]
+};
+
+const dataImage = {
+  "name": "root",
+  "children": [
+    {
+      "name": "Branch1",
+      "value": 100,
+      "images": ["visionAI.png", "amazonRekognition.png", "googleGemini.png"]
+    }
+  ]
+};
+
+const dataVoice = {
+  "name": "root",
+  "children": [
+    {
+      "name": "Branch1",
+      "value": 100,
+      "images": ["textToSpeech.png", "amazonLex","krisp.png"]
+    }
+  ]
+};
+
+const dataMusic = {
+  "name": "root",
+  "children": [
+    {
+      "name": "Branch1",
+      "value": 100,
+      "images": ["suno.png", "musicGen.png"]
+    }
+  ]
+};
+
+const dataVideo = {
+  "name": "root",
+  "children": [
+    {
+      "name": "Branch1",
+      "value": 100,
+      "images": ["videoAI.png", "amazonPolly.png", "synesthesia.png"]
+    }
+  ]
+};
+
+const data3D = {
+  "name": "root",
+  "children": [
+    {
+      "name": "Branch1",
+      "value": 100,
+      "images": ["azureKinect.png"]
+    }
+  ]
+};
+
+const dataText = {
+  "name": "root",
+  "children": [
+    {
+      "name": "Branch1",
+      "value": 100,
+      "images": ["palM2.png", "vertexAI.png", "autoML.png", "naturalLanguage", "speechToText", "transaltionAI", "dialogflow", "amazonComprehend", "amazonKendra",  ]
     }
   ]
 };
@@ -80,22 +146,58 @@ function AnotherPage () {
         return (
           <>
           <div class="flex justify-center items-center h-screen">
-          <PieChart data={data} backendData={backendData}/>
+          <PieChart data={dataCode} backendData={backendData}/>
           </div>
           <h1>Code</h1>
           </>)
       case 'image':
-        return <h1>Image</h1>;
+        return (
+          <>
+          <div class="flex justify-center items-center h-screen">
+          <PieChart data={dataImage} backendData={backendData}/>
+          </div>
+          <h1>Image</h1>
+          </>)
       case 'voice':
-        return <h1>Voice</h1>;
+        return (
+          <>
+          <div class="flex justify-center items-center h-screen">
+          <PieChart data={dataVoice} backendData={backendData}/>
+          </div>
+          <h1>Voice</h1>
+          </>)
       case 'music':
-        return <h1>Music</h1>;
+        return (
+          <>
+          <div class="flex justify-center items-center h-screen">
+          <PieChart data={dataMusic} backendData={backendData}/>
+          </div>
+          <h1>Music</h1>
+          </>)
       case 'video':
-        return <h1>Video</h1>;
+        return (
+          <>
+          <div class="flex justify-center items-center h-screen">
+          <PieChart data={dataVideo} backendData={backendData}/>
+          </div>
+          <h1>Video</h1>
+          </>)
       case '3D':
-        return <h1>3D</h1>;
+        return (
+          <>
+          <div class="flex justify-center items-center h-screen">
+          <PieChart data={data3D} backendData={backendData}/>
+          </div>
+          <h1>3D</h1>
+          </>)
       case 'text':
-        return <h1>Text</h1>;
+        return (
+          <>
+          <div class="flex justify-center items-center h-screen">
+          <PieChart data={dataText} backendData={backendData}/>
+          </div>
+          <h1>Text</h1>
+          </>)
       default:
         return <h1>Unknown</h1>;
     }
