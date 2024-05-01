@@ -69,14 +69,14 @@ const dataVoice = {
       "images": ["textToSpeech.png"]
     },
     {
-      "name": "Branch1",
+      "name": "Branch2",
       "value": 100,
       "images": ["amazonLex.png"]
     },
     {
-      "name": "Branch1",
+      "name": "Branch3",
       "value": 100,
-      "images": ["googleGemini.png"]
+      "images": ["krisp.png"]
     }
   ]
 };
@@ -87,7 +87,12 @@ const dataMusic = {
     {
       "name": "Branch1",
       "value": 100,
-      "images": ["suno.png", "musicGen.png"]
+      "images": ["suno.png"]
+    },
+    {
+      "name": "Branch2",
+      "value": 100,
+      "images": ["musicGen.png"]
     }
   ]
 };
