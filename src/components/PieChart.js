@@ -116,7 +116,7 @@ function PieChart({ data, backendData }) {
         .innerRadius(d => radius / 5)
         .outerRadius(d => radius);
   
-      svg.append("g")
+      const arcs= svg.append("g")
         .selectAll("path")
         .data(root.descendants().slice(1))
         .join("path")
@@ -124,6 +124,24 @@ function PieChart({ data, backendData }) {
         .attr("fill", d => "#203459")
         .attr("stroke", "#991212")
         .attr("stroke-width", 2);
+
+        arcs.each(function(d) {
+          const angle = (d.x0 + d.x1) / 2; // midpoint angle
+          const x = Math.cos(angle) * (radius + 10); // adjust 10 for label spacing
+          const y = Math.sin(angle) * (radius + 10);
+          const rotation = (angle * 180 / Math.PI) - 90;
+          const rotateAdjust = rotation > 90 ? rotation + 180 : rotation;
+          
+          svg.append("text")
+            .attr("x", x)
+            .attr("y", y)
+            .attr("dy", "0.35em")
+            .attr("text-anchor", "middle")
+            .attr("transform", `rotate(${rotateAdjust},${x},${y})`)
+            .text("hello from lol") // Your custom text
+            .style("font-size", "12px")
+            .style("fill", "#991212");
+        });
   
       const placedImages = [];
   

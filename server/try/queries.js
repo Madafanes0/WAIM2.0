@@ -28,9 +28,20 @@ WHERE "tool_id" = $1
 RETURNING *; 
 `;
 
+const postUser = `
+SELECT U."id", U."email", U."password", R."name" as "role"
+FROM "User" U
+JOIN "UserRole" UR ON U."id" = UR."userId"
+JOIN "Role" R ON UR."roleId" = R."id"
+WHERE U."email" = $1;
+`;
+
+
+
 module.exports = {
     getAI, 
     postAI,
     getAIByContent,
-    deleteAI
+    deleteAI,
+    postUser
 };
