@@ -22,17 +22,17 @@ const dataCode = {
   "name": "root",
   "children": [
     {
-      "name": "Branch1",
+      "name": "",
       "value": 100,
       "images": ["vertexAI.webp"]
     },
     {
-      "name": "Branch2",
+      "name": "",
       "value": 100,
       "images": ["codey.png"]
     },
     {
-      "name": "Branch3",
+      "name": "",
       "value": 100,
       "images": ["sageMaker.png"] 
     }
@@ -43,17 +43,17 @@ const dataImage = {
   "name": "root",
   "children": [
     {
-      "name": "Branch1",
+      "name": "",
       "value": 100,
       "images": ["visionAI.png"]
     },
     {
-      "name": "Branch2",
+      "name": "",
       "value": 100,
       "images": ["amazonRekognition.png"]
     },
     {
-      "name": "Branch3",
+      "name": "",
       "value": 100,
       "images": ["googleGemini.png"]
     }
@@ -64,17 +64,17 @@ const dataVoice = {
   "name": "root",
   "children": [
     {
-      "name": "Branch1",
+      "name": "",
       "value": 100,
       "images": ["textToSpeech.png"]
     },
     {
-      "name": "Branch2",
+      "name": "",
       "value": 100,
       "images": ["amazonLex.png"]
     },
     {
-      "name": "Branch3",
+      "name": "",
       "value": 100,
       "images": ["krisp.png"]
     }
@@ -85,12 +85,12 @@ const dataMusic = {
   "name": "root",
   "children": [
     {
-      "name": "Branch1",
+      "name": "",
       "value": 100,
       "images": ["suno.png"]
     },
     {
-      "name": "Branch2",
+      "name": "",
       "value": 100,
       "images": ["musicGen.png"]
     }
@@ -101,17 +101,17 @@ const dataVideo = {
   "name": "root",
   "children": [
     {
-      "name": "Branch1",
+      "name": "",
       "value": 100,
       "images": ["videoAI.png"]
     },
     {
-      "name": "Branch2",
+      "name": "",
       "value": 100,
       "images": ["amazonPolly.png"]
     },
     {
-      "name": "Branch3",
+      "name": "",
       "value": 100,
       "images": ["synesthesia.png"]
     }
@@ -122,7 +122,7 @@ const data3D = {
   "name": "root",
   "children": [
     {
-      "name": "Branch1",
+      "name": "",
       "value": 100,
       "images": ["azureKinect.png"]
     }
@@ -155,25 +155,7 @@ const dataText = {
   ]
 };
 
-const CanvasContent = () => {
-  //const navigate = useNavigate(); possible if i want to make an alternative to another page 
-  const handleFaceClick = (faceIndex) => {
-    console.log(faceIndex);
-    
-  };
 
-  return (
-    <>
-      <ClickableBox2
-        size={[3, 3, 3]}
-        rotationSpeed={0.0015}
-        images={[code, image, voice, music, video3d, text]}
-        onClick={handleFaceClick}
-    />
-      <OrbitControls enableZoom={false} enablePan={false} />
-    </>
-  );
-};
 
 function AnotherPage () {
   
@@ -255,8 +237,8 @@ function AnotherPage () {
   return (
       <div>
         <NavbarW />
-        <Canvas className="canvas" style={{ height: "300px", width: '300px'}}>
-          <CanvasContent />
+        <Canvas className="canvas" style={{ height: "0", width: '300px'}}>
+        
         </Canvas>
         <div class="justify-center text-black text-center">
           {renderContent()}
