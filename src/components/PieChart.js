@@ -69,8 +69,19 @@ function PieChart({ data, backendData }) {
         imageElement.on("mouseenter", function(event) {
           const matchingData = backendData.find(item => item.toolName.replace(/\s/g, '').toLowerCase() === img.replace('.webp', '').replace('.png', '').toLowerCase());
           const tooltipHtml = matchingData ?
-            `<strong>${matchingData.toolName}</strong><br>${matchingData.toolDescription}` :
-            `No detailed data available for ${img}`;
+            `<div style="padding: 8px; background-color: #203449; margin-bottom: 5px; color: white; border-radius: 5px;">
+            <strong>${matchingData.toolName}</strong>
+            </div>
+            <div style="padding: 8px; background-color: #203449; margin-bottom: 5px; color: white; border-radius: 5px;">
+            <strong style="color: #A7D8FF;">About</strong><br>${matchingData.toolDescription}
+            </div>
+            <div style="padding: 8px; background-color: #203449; margin-bottom: 5px; color: white; border-radius: 5px; align-items: center">
+            <strong style="color: #A7D8FF;">License: </strong><span>${matchingData.licenseType}</span>
+            </div>
+            <div style="padding: 8px; background-color: #203449; color: #008CFF;  border-radius: 5px;">
+            ${matchingData.referenceURL}
+            </div>`
+            : `No detailed data available for ${img}`;
           
           d3.select(tooltipRef.current)
             .style("left", `${event.pageX + 10}px`)
@@ -88,7 +99,7 @@ function PieChart({ data, backendData }) {
   return (
     <>
       <svg ref={ref} style={{ width: '100%', height: 'auto', maxWidth: '928px' }} />
-      <div ref={tooltipRef} className="tooltip" style={{ position: 'absolute', visibility: 'hidden', pointerEvents: 'none', backgroundColor: 'white', border: '1px solid black', padding: '5px', zIndex: 10 }} />
+      <div ref={tooltipRef} className="tooltip" style={{ position: 'absolute', visibility: 'hidden', pointerEvents: 'none', backgroundColor: '#111823', border: '1px solid #ccc', borderRadius: '10px', padding: '10px 15px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', zIndex: 10 }} />
     </>
   );
 }
