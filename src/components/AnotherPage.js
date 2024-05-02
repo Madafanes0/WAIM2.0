@@ -155,25 +155,7 @@ const dataText = {
   ]
 };
 
-const CanvasContent = () => {
-  //const navigate = useNavigate(); possible if i want to make an alternative to another page 
-  const handleFaceClick = (faceIndex) => {
-    console.log(faceIndex);
-    
-  };
 
-  return (
-    <>
-      <ClickableBox2
-        size={[3, 3, 3]}
-        rotationSpeed={0.0015}
-        images={[code, image, voice, music, video3d, text]}
-        onClick={handleFaceClick}
-    />
-      <OrbitControls enableZoom={false} enablePan={false} />
-    </>
-  );
-};
 
 function AnotherPage () {
   
@@ -255,8 +237,8 @@ function AnotherPage () {
   return (
       <div>
         <NavbarW />
-        <Canvas className="canvas" style={{ height: "300px", width: '300px'}}>
-          <CanvasContent />
+        <Canvas className="canvas" style={{ height: "0", width: '300px'}}>
+        
         </Canvas>
         <div class="justify-center text-black text-center">
           {renderContent()}
