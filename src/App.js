@@ -56,26 +56,26 @@ const CanvasContent = () => {
       case 0:
       case 1:
         console.log('Code');
-        navigate(route + 'code');
+        navigate(route + 'Code');
         break;
       case 2:
       case 3:
         console.log('Image');
-        navigate(route + 'image');
+        navigate(route + 'Image');
         break;
       case 4:
       case 5:
         console.log('Voice');
-        navigate(route + 'voice');
+        navigate(route + 'Voice');
         break;
       case 6:
       case 7:
         console.log('Music');
-        navigate(route + 'music');
+        navigate(route + 'Music');
         break;
       case 8:
         console.log('Video');
-        navigate(route + 'video');
+        navigate(route + 'Video');
         break;
       case 9:
         console.log('3D');
@@ -84,7 +84,7 @@ const CanvasContent = () => {
       case 10:
       case 11:
         console.log('Text');
-        navigate(route + 'text');
+        navigate(route + 'Text');
         break;
       default:
         break;
