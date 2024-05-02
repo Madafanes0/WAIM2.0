@@ -178,21 +178,20 @@ const CanvasContent = () => {
 function AnotherPage () {
   
   const [backendData, setBackendData]= useState([{}])
-
+  const { type } = useParams(); 
   useEffect(() => {
-    axios.get('/api/by-content-type/Code')
+    axios.get(`/api/by-content-type/${type}`)
         .then(response => {
             setBackendData(response.data); // Directly using response.data
         })
         .catch(error => {
             console.error('There was a problem with the axios operation:', error);
         });
-}, []);
+}, [type]);
 
-  const { type } = useParams(); 
   const renderContent = () => {
     switch (type) {
-      case 'code':
+      case 'Code':
         return (
           <>
           <div class="flex justify-center items-center h-screen">
@@ -200,7 +199,7 @@ function AnotherPage () {
           </div>
           <h1>Code</h1>
           </>)
-      case 'image':
+      case 'Image':
         return (
           <>
           <div class="flex justify-center items-center h-screen">
@@ -208,7 +207,7 @@ function AnotherPage () {
           </div>
           <h1>Image</h1>
           </>)
-      case 'voice':
+      case 'Voice':
         return (
           <>
           <div class="flex justify-center items-center h-screen">
@@ -216,7 +215,7 @@ function AnotherPage () {
           </div>
           <h1>Voice</h1>
           </>)
-      case 'music':
+      case 'Music':
         return (
           <>
           <div class="flex justify-center items-center h-screen">
@@ -224,7 +223,7 @@ function AnotherPage () {
           </div>
           <h1>Music</h1>
           </>)
-      case 'video':
+      case 'Video':
         return (
           <>
           <div class="flex justify-center items-center h-screen">
@@ -240,7 +239,7 @@ function AnotherPage () {
           </div>
           <h1>3D</h1>
           </>)
-      case 'text':
+      case 'Text':
         return (
           <>
           <div class="flex justify-center items-center h-screen">
