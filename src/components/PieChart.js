@@ -6,7 +6,7 @@ import sageMaker from '../logos/sageMaker.png';
 import visionAI from '../logos/visionAI.png';
 import amazonRekognition from '../logos/amazonRekognition.png';
 import googleGemini from '../logos/googleGemini.webp';
-import textToSpeech from '../logos/textToSpeech.png';
+import TextToSpeech from '../logos/TextToSpeech.png';
 import amazonLex from '../logos/amazonLex.png';
 import krisp from '../logos/krisp.png';
 import suno from '../logos/suno.png';
@@ -14,23 +14,23 @@ import musicGen from '../logos/musicGen.png';
 import videoAI from '../logos/videoAI.png';
 import amazonPolly from '../logos/amazonPolly.png';
 import synesthesia from '../logos/synesthesia.png';
-import azureKinect from '../logos/azureKinect.png';
+import AzureKinectDK from '../logos/AzureKinectDK.png';
 import palM2 from '../logos/palM2.png';
 import chirp from '../logos/chirp.webp';
 import autoML from '../logos/autoML.png';
-import naturalLanguage from '../logos/naturalLanguage.png';
-import speechToText from '../logos/speechToText.png';
+import NaturalLanguageAI from '../logos/NaturalLanguageAI.png';
+import SpeechToText from '../logos/SpeechToText.png';
 import translationAI from '../logos/translationAI.png';
 import dialogflow from '../logos/dialogflow.png';
 import amazonComprehend from '../logos/amazonComprehend.png';
-import amazonKendra from '../logos/amazonKendra.png';
+import Kendra from '../logos/Kendra.png';
 import amazonTextract from '../logos/amazonTextract.png';
 import amazonBedrock from '../logos/amazonBedrock.png';
 import amazonCodewhisperer from '../logos/amazonCodewhisperer.png';
-import azureAIDocIntelligence from '../logos/azureAIDocIntelligence.png';
+import AzureAIDocumentIntelligence from '../logos/AzureAIDocumentIntelligence.png';
 import azureMachineLearning from '../logos/azureMachineLearning.png';
 import azureCognitiveSearch from '../logos/azureCognitiveSearch.webp';
-import azureBotService from '../logos/azureBotService.png';
+import AzureAIBotService from '../logos/AzureAIBotService.png';
 import azureDatabricks from '../logos/azureDatabricks.png';
 import azureOpenAI from '../logos/azureOpenAI.png';
 import quillbot from '../logos/quillbot.webp';
@@ -48,7 +48,7 @@ const imageMap = {
     'visionAI.png': visionAI,
     'amazonRekognition.png': amazonRekognition,
     'googleGemini.png': googleGemini,
-    'textToSpeech.png': textToSpeech,
+    'TextToSpeech.png': TextToSpeech,
     'amazonLex.png': amazonLex,
     'krisp.png': krisp,
     'suno.png': suno,
@@ -56,23 +56,23 @@ const imageMap = {
     'videoAI.png': videoAI,
     'amazonPolly.png': amazonPolly,
     'synesthesia.png': synesthesia,
-    'azureKinect.png': azureKinect,
+    'AzureKinectDK.png': AzureKinectDK,
     'palM2.png': palM2,
     'chirp.webp': chirp,
     'autoML.png': autoML,
-    'naturalLanguage.png': naturalLanguage,
-    'speechToText.png': speechToText,
+    'NaturalLanguageAI.png': NaturalLanguageAI,
+    'SpeechToText.png': SpeechToText,
     'translationAI.png': translationAI,
     'dialogflow.png': dialogflow,
     'amazonComprehend.png': amazonComprehend,
-    'amazonKendra.png': amazonKendra,
+    'Kendra.png': Kendra,
     'amazonTextract.png': amazonTextract,
     'amazonBedrock.png': amazonBedrock,
     'amazonCodewhisperer.png': amazonCodewhisperer,
-    'azureAIDocIntelligence.png': azureAIDocIntelligence,
+    'AzureAIDocumentIntelligence.png': AzureAIDocumentIntelligence,
     'azureMachineLearning.png': azureMachineLearning,
     'azureCognitiveSearch.webp': azureCognitiveSearch,
-    'azureBotService.png': azureBotService,
+    'AzureAIBotService.png': AzureAIBotService,
     'azureDatabricks.png': azureDatabricks,
     'azureOpenAI.png': azureOpenAI,
     'quillbot.webp': quillbot,
