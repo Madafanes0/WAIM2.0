@@ -176,58 +176,58 @@ function AnotherPage () {
       case 'Code':
         return (
           <>
+          <h1 class="text-4xl font-bold text-gray-800 text-center">Code</h1>
           <div class="flex justify-center items-center h-screen">
           <PieChart data={dataCode} backendData={backendData}/>
           </div>
-          <h1>Code</h1>
           </>)
       case 'Image':
         return (
           <>
+          <h1 class="text-4xl font-bold text-gray-800 text-center">Image</h1>
           <div class="flex justify-center items-center h-screen">
           <PieChart data={dataImage} backendData={backendData}/>
           </div>
-          <h1>Image</h1>
           </>)
       case 'Voice':
         return (
           <>
+          <h1 class="text-4xl font-bold text-gray-800 text-center">Voice</h1>
           <div class="flex justify-center items-center h-screen">
           <PieChart data={dataVoice} backendData={backendData}/>
           </div>
-          <h1>Voice</h1>
           </>)
       case 'Music':
         return (
           <>
+          <h1 class="text-4xl font-bold text-gray-800 text-center">Music & Sound</h1>
           <div class="flex justify-center items-center h-screen">
           <PieChart data={dataMusic} backendData={backendData}/>
           </div>
-          <h1>Music</h1>
           </>)
       case 'Video':
         return (
           <>
+          <h1 class="text-4xl font-bold text-gray-800 text-center">Video</h1>
           <div class="flex justify-center items-center h-screen">
           <PieChart data={dataVideo} backendData={backendData}/>
           </div>
-          <h1>Video</h1>
           </>)
       case '3D':
         return (
           <>
+          <h1 class="text-4xl font-bold text-gray-800 text-center">3D</h1>
           <div class="flex justify-center items-center h-screen">
           <PieChart data={data3D} backendData={backendData}/>
           </div>
-          <h1>3D</h1>
           </>)
       case 'Text':
         return (
           <>
+          <h1 class="text-4xl font-bold text-gray-800 text-center">Text</h1>
           <div class="flex justify-center items-center h-screen">
           <PieChart data={dataText} backendData={backendData}/>
           </div>
-          <h1>Text</h1>
           </>)
       default:
         return <h1>Unknown</h1>;
@@ -243,7 +243,6 @@ function AnotherPage () {
         <div class="justify-center text-black text-center">
           {renderContent()}
         </div>
-        <FilterBox />
         
         <Footer />
       </div>
