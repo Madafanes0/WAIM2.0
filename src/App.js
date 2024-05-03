@@ -22,6 +22,7 @@ import voice from './images/voice.png';
 
 import background from './images/background.svg';
 import UpdateBox from './components/UpdateBox';
+import AllScreen from './components/AllScreen';
  
 
 export default function App() {
@@ -44,6 +45,7 @@ export default function App() {
         <Route path='/DeleteScreen' element={<DeleteScreen/>}/>
         <Route path='/AddScreen' element={<AddScreen/>}/>
         <Route path='/UpdateBox' element={<UpdateBox/>}/>
+        <Route path='/AllScreen' element={<AllScreen/>}/>
       </Routes>
     </Router>
   );
