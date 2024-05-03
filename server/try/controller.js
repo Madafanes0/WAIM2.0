@@ -92,11 +92,41 @@ const postUser = async (req, res) => {
     }
 }
 
+const updateAI = async (req, res) => {
+    const { tool_id, toolName, contentTypeId, ecosystem, freeVersion, licenseType, paidVersion, referenceURL, toolDescription } = req.body;
+
+    console.log('Received values:', {
+        tool_id,
+        toolName,
+        contentTypeId,
+        ecosystem,
+        freeVersion,
+        licenseType,
+        paidVersion,
+        referenceURL,
+        toolDescription
+    });
+
+    const values = [tool_id, toolName, contentTypeId, ecosystem, freeVersion, licenseType, paidVersion, referenceURL, toolDescription];
+
+    console.log('Prepared values for SQL query:', values);
+
+    pool.query(queries.updateAI, values, (error, results) => {
+        if (error) {
+            console.error('Database query error:', error.message);
+            return res.status(400).json({ error: error.message });
+        }
+        console.log('Database response:', results.rows);
+        res.status(200).json(results.rows[0]);
+    });
+}
+
 
 module.exports = 
     {getAI, 
      postAI,
      getAIByContentType,
      deleteAI, 
-     postUser
+     postUser,
+     updateAI
     };

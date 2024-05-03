@@ -8,5 +8,6 @@ router.post('/', controller.postAI);
 router.get('/by-content-type/:contentTypeName', controller.getAIByContentType);
 router.delete('/:tool_id', controller.deleteAI);
 router.post('/login/', controller.postUser)
+router.patch('/', controller.updateAI);
 
 module.exports= router;

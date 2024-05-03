@@ -36,12 +36,17 @@ JOIN "Role" R ON UR."roleId" = R."id"
 WHERE U."email" = $1;
 `;
 
-
+const updateAI = `
+UPDATE "AI" 
+SET "toolName" = $2, "contentTypeId" = $3, "ecosystem" = $4, "freeVersion" = $5, "licenseType" = $6, "paidVersion" = $7, "referenceURL" = $8, "toolDescription" = $9
+WHERE "tool_id" = $1;
+`;
 
 module.exports = {
     getAI, 
     postAI,
     getAIByContent,
     deleteAI,
-    postUser
+    postUser,
+    updateAI
 };
