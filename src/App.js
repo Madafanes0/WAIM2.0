@@ -21,6 +21,7 @@ import music from './images/music.png';
 import voice from './images/voice.png';
 
 import background from './images/background.svg';
+import UpdateBox from './components/UpdateBox';
  
 
 export default function App() {
@@ -42,6 +43,7 @@ export default function App() {
         <Route path='/Login' element={<Login/>}/>
         <Route path='/DeleteScreen' element={<DeleteScreen/>}/>
         <Route path='/AddScreen' element={<AddScreen/>}/>
+        <Route path='/UpdateBox' element={<UpdateBox/>}/>
       </Routes>
     </Router>
   );

@@ -53,16 +53,22 @@ const Footer = () => {
   return <footer className ="bg-zinc-800 text-white">
   <ItemsContainer/>
 
-  <div className="grid grid-cols-1 sm:grid cols-2 lg:grid-cols-2 gap-10 text-center pt-2 text-gray-400 text sm:pb-8 gap-x-80">
-    <p className="text-left padding pl-6">© Copyright Wizeline 2024</p>
-    <ul className= "flex flex-wrap items-center justify-center text-gray-900 dark:text-white">
-      <li className="md:me-6"><a href="https://www.wizeline.com/cookie-notice/">Cookie Notice</a></li>
-      <li className="md:me-6"><a href="https://www.wizeline.com/privacy-policy/">Privacy Policy</a></li>
-      <li className="md:me-6"><a href="https://www.wizeline.com/terms-and-conditions/">Terms & Conditions</a></li>
-      <li className="md:me-6"><a href="https://www.wizeline.com/security-and-compliance/">Security and Complience</a></li>
-      <li className="md:me-6"><a href="/DeleteScreen">Delete AI</a></li>
-      <li className="md:me-6"><a href="/AddScreen">Add AI</a></li>
-    </ul>
+  <div className="grid grid-flow-col auto-cols-max grid-cols-1 sm:grid cols-1 lg:grid-cols-1 gap-10 text-center pt-2 text-gray-400 text sm:pb-8 gap-x-80">
+    <div className="col-span-1">
+      <p className="text-left padding pl-6 items-center">© Copyright Wizeline 2024</p>
+    </div>
+    <div className= "col-span-1">
+      <ul className= "flex flex-wrap items-center justify-center text-gray-900 dark:text-white">
+        <li className="md:me-6"><a href="https://www.wizeline.com/cookie-notice/">Cookie Notice</a></li>
+        <li className="md:me-6"><a href="https://www.wizeline.com/privacy-policy/">Privacy Policy</a></li>
+        <li className="md:me-6"><a href="https://www.wizeline.com/terms-and-conditions/">Terms & Conditions</a></li>
+        <li className="md:me-6"><a href="https://www.wizeline.com/security-and-compliance/">Security and Complience</a></li>
+        <li className="md:me-6"><a href="/DeleteScreen">Delete AI</a></li>
+        <li className="md:me-6"><a href="/AddScreen">Add AI</a></li>
+        <li className="md:me-6"><a href="/UpdateBox">Update AI</a></li>
+      </ul>
+    </div>
+    
 
   </div>
 
