@@ -66,7 +66,7 @@ const dataVoice = {
     {
       "name": "",
       "value": 100,
-      "images": ["textToSpeech.png"]
+      "images": ["TextToSpeech.png"]
     },
     {
       "name": "",
@@ -124,7 +124,7 @@ const data3D = {
     {
       "name": "",
       "value": 100,
-      "images": ["azureKinect.png"]
+      "images": ["AzureKinectDK.png"]
     }
   ]
 };
@@ -140,12 +140,12 @@ const dataText = {
     {
       "name": "Cloud Services",
       "value": 100,
-      "images": ["chirp.webp", "autoML.png", "NaturalLanguageAI.png", "speechToText.png", "transaltionAI.png","amazonBedrock.png", "azureAIDocIntelligence.png", "azureMachineLearning.png", "azureCognitiveSearch.webp", "llamaIndex.png"]
+      "images": ["chirp.webp", "autoML.png", "NaturalLanguageAI.png", "SpeechToText.png", "transaltionAI.png","amazonBedrock.png", "AzureAIDocumentIntelligence.png", "azureMachineLearning.png", "azureCognitiveSearch.webp", "llamaIndex.png"]
     },
     {
       "name": "Applications",
       "value": 150,
-      "images": ["dialogflow.png", "amazonComprehend.png", "Kendra.png", "amazonCodewhisperer.png", "azureBotService.png", "quillbot.webp", "jenni.png", "octane.png", "quickchatAI.png", "quizgecko.png", "quotifyAI.png", "perplexityAI.png"]
+      "images": ["dialogflow.png", "amazonComprehend.png", "Kendra.png", "amazonCodewhisperer.png", "AzureAIBotService.png", "quillbot.webp", "jenni.png", "octane.png", "quickchatAI.png", "quizgecko.png", "quotifyAI.png", "perplexityAI.png"]
     },
     {
       "name": "Data and Integration Services",
