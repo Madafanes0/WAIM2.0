@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // Make sure to install axios if not already installed
+import Footer from './Footer';
+import Navbar from './Navbar';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -18,11 +20,13 @@ function Login() {
     };
 
     return (
+        <>
+        <Navbar/>
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
             <div className="max-w-md w-full p-6 bg-white shadow-md rounded-lg">
                 <h1 className="text-3xl font-semibold mb-2 text-black text-center">Login</h1>
                 <h2 className="text-sm font-semibold mb-6 text-gray-500 text-center">
-                    Welcome back to Borkonator
+                    Welcome to WAIM
                 </h2>
                 <form onSubmit={handleSubmit}>
                     <div>
@@ -45,6 +49,8 @@ function Login() {
                 </form>
             </div>
         </div>
+        <Footer/>
+        </>
     );
 }
 

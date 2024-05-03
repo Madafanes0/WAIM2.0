@@ -30,7 +30,7 @@ export default function App() {
         <Route path="/" element={
         <>
           <NavbarW />
-          <Canvas className="canvas" style={{ height: '700px', backgroundImage: `url(${background})`}}>
+          <Canvas className="canvas" style={{ height: '900px', backgroundImage: `url(${background})`}}>
             <OrbitControls enableZoom={false} enablePan={false} />
             <CanvasContent />
 

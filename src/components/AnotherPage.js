@@ -237,7 +237,7 @@ function AnotherPage () {
   return (
       <div>
         <NavbarW />
-        <Canvas className="canvas" style={{ height: "0", width: '300px'}}>
+        <Canvas className="canvas" style={{ height: "100", width: '300px'}}>
         
         </Canvas>
         <div class="justify-center text-black text-center">
