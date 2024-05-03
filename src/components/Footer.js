@@ -66,6 +66,7 @@ const Footer = () => {
         <li className="md:me-6"><a href="/DeleteScreen">Delete AI</a></li>
         <li className="md:me-6"><a href="/AddScreen">Add AI</a></li>
         <li className="md:me-6"><a href="/UpdateBox">Update AI</a></li>
+        <li className="md:me-6"><a href="/AllScreen">See AI</a></li>
       </ul>
     </div>
     
