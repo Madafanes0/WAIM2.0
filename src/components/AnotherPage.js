@@ -140,12 +140,12 @@ const dataText = {
     {
       "name": "Cloud Services",
       "value": 100,
-      "images": ["chirp.webp", "autoML.png", "naturalLanguage.png", "speechToText.png", "transaltionAI.png","amazonBedrock.png", "azureAIDocIntelligence.png", "azureMachineLearning.png", "azureCognitiveSearch.webp", "llamaIndex.png"]
+      "images": ["chirp.webp", "autoML.png", "NaturalLanguageAI.png", "speechToText.png", "transaltionAI.png","amazonBedrock.png", "azureAIDocIntelligence.png", "azureMachineLearning.png", "azureCognitiveSearch.webp", "llamaIndex.png"]
     },
     {
       "name": "Applications",
       "value": 150,
-      "images": ["dialogflow.png", "amazonComprehend.png", "amazonKendra.png", "amazonCodewhisperer.png", "azureBotService.png", "quillbot.webp", "jenni.png", "octane.png", "quickchatAI.png", "quizgecko.png", "quotifyAI.png", "perplexityAI.png"]
+      "images": ["dialogflow.png", "amazonComprehend.png", "Kendra.png", "amazonCodewhisperer.png", "azureBotService.png", "quillbot.webp", "jenni.png", "octane.png", "quickchatAI.png", "quizgecko.png", "quotifyAI.png", "perplexityAI.png"]
     },
     {
       "name": "Data and Integration Services",

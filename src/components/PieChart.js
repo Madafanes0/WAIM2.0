@@ -18,12 +18,12 @@ import azureKinect from '../logos/azureKinect.png';
 import palM2 from '../logos/palM2.png';
 import chirp from '../logos/chirp.webp';
 import autoML from '../logos/autoML.png';
-import naturalLanguage from '../logos/naturalLanguage.png';
+import NaturalLanguageAI from '../logos/NaturalLanguageAI.png';
 import speechToText from '../logos/speechToText.png';
 import translationAI from '../logos/translationAI.png';
 import dialogflow from '../logos/dialogflow.png';
 import amazonComprehend from '../logos/amazonComprehend.png';
-import amazonKendra from '../logos/amazonKendra.png';
+import Kendra from '../logos/Kendra.png';
 import amazonTextract from '../logos/amazonTextract.png';
 import amazonBedrock from '../logos/amazonBedrock.png';
 import amazonCodewhisperer from '../logos/amazonCodewhisperer.png';
@@ -60,12 +60,12 @@ const imageMap = {
     'palM2.png': palM2,
     'chirp.webp': chirp,
     'autoML.png': autoML,
-    'naturalLanguage.png': naturalLanguage,
+    'NaturalLanguageAI.png': NaturalLanguageAI,
     'speechToText.png': speechToText,
     'translationAI.png': translationAI,
     'dialogflow.png': dialogflow,
     'amazonComprehend.png': amazonComprehend,
-    'amazonKendra.png': amazonKendra,
+    'Kendra.png': Kendra,
     'amazonTextract.png': amazonTextract,
     'amazonBedrock.png': amazonBedrock,
     'amazonCodewhisperer.png': amazonCodewhisperer,
