@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState} from 'react';
 import * as d3 from 'd3';
 import vertexAI from '../logos/vertexAI.webp';
 import codey from '../logos/codey.png';
@@ -88,7 +88,18 @@ function PieChart({ data, backendData }) {
 
   const ref = useRef();
   const tooltipRef = useRef();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  
   useEffect(() => {
     if (!data) return;
 
@@ -206,6 +217,7 @@ function PieChart({ data, backendData }) {
 
           if (!collision) {
             placedImages.push({ x, y, size: imageSize });
+            
             const imageElement = svg.append("image")
               .attr("xlink:href", imageMap[img])
               .attr("x", x - imageSize / 2)
@@ -214,7 +226,7 @@ function PieChart({ data, backendData }) {
               .attr("height", imageSize+30);
 
             // Adding tooltip functionality based on backendData
-            imageElement.on("mouseenter", function(event) {
+            imageElement.on("click", function(event) {
               const matchingData = backendData.find(item => item.toolName.replace(/\s/g, '').toLowerCase() === img.replace('.webp', '').replace('.png', '').toLowerCase());
               const tooltipHtml = matchingData ?
               `<div style="padding: 8px; background-color: #203449; margin-bottom: 5px; color: white; border-radius: 5px;">
@@ -232,14 +244,12 @@ function PieChart({ data, backendData }) {
               : `No detailed data available for ${img}`;
 
               d3.select(tooltipRef.current)
-                .style("left", `${event.pageX + 10}px`)
-                .style("top", `${event.pageY + 10}px`)
+                .html(tooltipHtml)
                 .style("visibility", "visible")
-                .html(tooltipHtml);
-            }).on("mouseleave", function() {
-              d3.select(tooltipRef.current)
-                .style("visibility", "hidden");
-            });
+              event.stopPropagation();
+            })
+
+            
 
             placed = true;
           }
@@ -248,12 +258,39 @@ function PieChart({ data, backendData }) {
         }
       });
     });
+
+    const handleWindowClick = () => {
+      d3.select(tooltipRef.current).style("visibility", "hidden");
+    };
+
+    window.addEventListener('click', handleWindowClick);
+
+    return () => {
+      window.removeEventListener('click', handleWindowClick);
+    };
+
   }, [data, backendData]);
 
   return (
     <>
       <svg ref={ref} style={{ width: '100%', height: 'auto', maxWidth: '928px' }} />
-      <div ref={tooltipRef} className="tooltip" style={{ position: 'absolute', visibility: 'hidden', pointerEvents: 'none', backgroundColor: '#111823', border: '1px solid #ccc', borderRadius: '10px', padding: '10px 15px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', zIndex: 10 }} />
+      <div ref={tooltipRef} className="tooltip" style={{
+        position: 'absolute',
+        top: isMobile ? '380px' : '100px',
+        right: isMobile ? '50%' : '10px',
+        transform: isMobile ? 'translateX(50%)' : 'none',
+        width: '30%',
+        maxWidth: '480px',
+        minWidth: '480px',
+        visibility: 'hidden',
+        pointerEvents: 'none',
+        backgroundColor: '#111823',
+        border: '1px solid #ccc',
+        borderRadius: '10px',
+        padding: '10px 15px',
+        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+        zIndex: 10,
+      }} />
     </>
   );
 }
