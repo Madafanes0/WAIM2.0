@@ -193,67 +193,46 @@ function PieChart({ data, backendData }) {
     const placedImages = [];
 
     root.descendants().slice(1).forEach(d => {
-      const angleMargin = 0.2; // Prevents touching the lines
+      const angleMargin = 0.2; // Reduces overlapping with arc borders
       const startAngle = d.x0 + angleMargin;
       const endAngle = d.x1 - angleMargin;
       const innerRadius = radius / 5 + 40; // Buffer for inner radius
       const outerRadius = radius - 70; // Buffer for outer radius
-
-      d.data.images.forEach(img => {
+      const images = d.data.images;
+    
+      images.forEach(img => {
         let attempts = 20;
         let placed = false;
-
+    
         while (!placed && attempts > 0) {
           const randomAngle = Math.random() * (endAngle - startAngle) + startAngle;
           const randomRadius = Math.random() * (outerRadius - innerRadius) + innerRadius;
-          const imageSize = Math.min(25, (outerRadius - innerRadius) / 3);
+    
+          // Determine image size, scaling up if only one image
+          const baseSize = (outerRadius - innerRadius) / (images.length + 2); // Dynamic base size based on the count of images
+          let imageSize = images.length === 1 ? baseSize * 2 : baseSize; // Increase size if only one image
+    
           const x = randomRadius * Math.sin(randomAngle);
           const y = -randomRadius * Math.cos(randomAngle);
-
+    
           // Check for collisions
           const collision = placedImages.some(p => {
             return Math.sqrt((p.x - x) ** 2 + (p.y - y) ** 2) < p.size + imageSize;
           });
-
+    
           if (!collision) {
             placedImages.push({ x, y, size: imageSize });
-            
+    
             const imageElement = svg.append("image")
               .attr("xlink:href", imageMap[img])
               .attr("x", x - imageSize / 2)
               .attr("y", y - imageSize / 2)
-              .attr("width", imageSize+30)
-              .attr("height", imageSize+30);
-
-            // Adding tooltip functionality based on backendData
-            imageElement.on("click", function(event) {
-              const matchingData = backendData.find(item => item.toolName.replace(/\s/g, '').toLowerCase() === img.replace('.webp', '').replace('.png', '').toLowerCase());
-              const tooltipHtml = matchingData ?
-              `<div style="padding: 8px; background-color: #203449; margin-bottom: 5px; color: white; border-radius: 5px;">
-              <strong>${matchingData.toolName}</strong>
-              </div>
-              <div style="padding: 8px; background-color: #203449; margin-bottom: 5px; color: white; border-radius: 5px;">
-              <strong style="color: #A7D8FF;">About</strong><br>${matchingData.toolDescription}
-              </div>
-              <div style="padding: 8px; background-color: #203449; margin-bottom: 5px; color: white; border-radius: 5px; align-items: center">
-              <strong style="color: #A7D8FF;">License: </strong><span>${matchingData.licenseType}</span>
-              </div>
-              <div style="padding: 8px; background-color: #203449; color: #008CFF;  border-radius: 5px;">
-              ${matchingData.referenceURL}
-              </div>`
-              : `No detailed data available for ${img}`;
-
-              d3.select(tooltipRef.current)
-                .html(tooltipHtml)
-                .style("visibility", "visible")
-              event.stopPropagation();
-            })
-
-            
-
+              .attr("width", imageSize)
+              .attr("height", imageSize);
+    
             placed = true;
           }
-
+    
           attempts--;
         }
       });
